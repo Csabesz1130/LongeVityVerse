@@ -1,11 +1,10 @@
 import type { JSX } from "react";
 import Image, { StaticImageData } from "next/image";
-import marcImg from "/blog/_assets/images/authors/marc.png";
+import marcImg from "@/app/blog/_assets/images/authors/marc.png";
 import introducingSupabaseImg from "@/public/blog/introducing-supabase/header.png";
-//import HeaderBlog from "./_assets/components/HeaderBlog";
 
 // ==================================================================================================================================================================
-// BLOG CATEGORIES 🏷️
+// BLOG CATEGORIES ð·ï¸
 // ==================================================================================================================================================================
 
 export type categoryType = {
@@ -49,7 +48,7 @@ export const categories: categoryType[] = [
 ];
 
 // ==================================================================================================================================================================
-// BLOG AUTHORS 📝
+// BLOG AUTHORS ð
 // ==================================================================================================================================================================
 
 export type authorType = {
@@ -126,7 +125,6 @@ const authorSlugs: {
   [key: string]: string;
 } = {
   marc: "marc",
-  csaba:"csaba",
 };
 
 // All the blog authors data display in the /blog/author/[authorId].js pages.
@@ -165,7 +163,7 @@ export const authors: authorType[] = [
 ];
 
 // ==================================================================================================================================================================
-// BLOG ARTICLES 📚
+// BLOG ARTICLES ð
 // ==================================================================================================================================================================
 
 export type articleType = {
@@ -213,7 +211,7 @@ export const articles: articleType[] = [
       categories.find((category) => category.slug === categorySlugs.feature),
     ],
     // The author of the article. It's used to generate a link to the author's bio page.
-    author: authors.find((author) => author.slug === authorSlugs.csaba),
+    author: authors.find((author) => author.slug === authorSlugs.marc),
     // The date of the article. It's used to generate the meta date.
     publishedAt: "2024-04-04",
     image: {
@@ -258,13 +256,16 @@ export const articles: articleType[] = [
             More articles and many interesting innovations are coming. Below a funny code snippet raises the awareness for the importance of keeping our health.
           </p>
 
-          <pre className={styles.code}> <code> {`function unlockImmorality() { const age = parseInt(prompt("Enter your age:")); const longevityPoints = parseInt(prompt("Enter your longevity points:")); if (longevityPoints > 9000) { alert("Congratulations! You've unlocked immortality! 🎉"); return true; } else if (age > 120) { alert("Wow, you're already over 120 years old! Keep up the great work! 👍"); return false; } else { alert("Keep earning those longevity points! You'll be immortal in no time! 💪"); return false; } }`} </code> </pre>
+          <pre className={styles.code}> <code> {`function unlockImmorality() { const age = parseInt(prompt("Enter your age:")); const longevityPoints = parseInt(prompt("Enter your longevity points:")); if (longevityPoints > 9000) { alert("Congratulations! You've unlocked immortality! ð"); return true; } else if (age > 120) { alert("Wow, you're already over 120 years old! Keep up the great work! ð"); return false; } else { alert("Keep earning those longevity points! You'll be immortal in no time! ðª"); return false; } }`} </code> </pre>
         </section>
 
         <section>
-          <h3 className={styles.h3}>Register and book a call with us.</h3>
+          <h3 className={styles.h3}>2. Add your credentials to ShipFast</h3>
           <p className={styles.p}>
-            Our goal is to make your everyday lives even healthier.
+            Copy the <span className={styles.codeInline}>API URL</span> and{" "}
+            <span className={styles.codeInline}>API Key</span> from your
+            Supabase project settings and add them to your ShipFast project
+            settings. Add these files to your project:
           </p>
 
           <ul className={styles.ul}>
