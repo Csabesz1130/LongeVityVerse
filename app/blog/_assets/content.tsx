@@ -125,6 +125,7 @@ const authorSlugs: {
   [key: string]: string;
 } = {
   marc: "marc",
+  csaba: "csaba",
 };
 
 // All the blog authors data display in the /blog/author/[authorId].js pages.
