@@ -277,4 +277,82 @@ export const articles: articleType[] = [
       </>
     ),
   },
+  {
+    // The unique slug to use in the URL. It's also used to generate the canonical URL.
+    slug: "introducing-longevity",
+    // The title to display in the article page (h1). Less than 60 characters. It's also used to generate the meta title.
+    title: "Introducing Longevity to everyone",
+    // The description of the article to display in the article page. Up to 160 characters. It's also used to generate the meta description.
+    description:
+      "Longevity, or the pursuit of extending human healthspan and lifespan, has long been a topic explored by scientists and researchers. However, the longevity field is rapidly advancing, and powerful tools to improve health and potentially slow aging are becoming more accessible to the general public.",
+    // An array of categories of the article. It's used to generate the category badges, the category filter, and more.
+    categories: [
+      categories.find((category) => category.slug === categorySlugs.feature),
+    ],
+    // The author of the article. It's used to generate a link to the author's bio page.
+    author: authors.find((author) => author.slug === authorSlugs.marc),
+    // The date of the article. It's used to generate the meta date.
+    publishedAt: "2024-04-04",
+    image: {
+      // The image to display in <CardArticle /> components.
+      src: introducingSupabaseImg,
+      // The relative URL of the same image to use in the Open Graph meta tags & the Schema Markup JSON-LD. It should be the same image as the src above.
+      urlRelative: "/blog/introducing-supabase/header.jpg",
+      alt: "Supabase and ShipFast logo combined",
+    },
+    // The actual content of the article that will be shown under the <h1> title in the article page.
+    content: (
+      <>
+        <Image
+          src={introducingSupabaseImg}
+          alt="Supabase and ShipFast logo combined"
+          width={700}
+          height={500}
+          priority={true}
+          className="rounded-box"
+          placeholder="blur"
+        />
+        <section>
+          <h2 className={styles.h2}>Introduction</h2>
+          <p className={styles.p}>
+          Longevity, or the pursuit of extending human healthspan and lifespan, has long been a topic explored by scientists and researchers. However, the longevity field is rapidly advancing, and powerful tools to improve health and potentially slow aging are becoming more accessible to the general public.
+
+          In this article, we&apos;ll provide an approachable introduction to longevity for a mainstream audience. We&apos;ll cover the current state of longevity research, explain key biological aging mechanisms, and highlight practical tips that anyone can implement to support their long-term health and wellbeing.
+
+          Whether you&apos;re already immersed in the world of longevity or are exploring it for the first time, this article will equip you with a solid foundational understanding. The science of longevity is constantly evolving, but armed with knowledge, we can all take proactive steps today towards longer, healthier lives.
+          </p>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>1. Read our post about managing you health.</h3>
+          <p className={styles.p}>
+            First, go to{" "}
+            <a href="https://longevityposts.vzy.io/the-essential-guide-to-longevity-understanding-its-importance-and-impact" className="link link-primary">
+              Longevity
+            </a>{" "}
+            Just click on the link and dive deep into it.
+            <br />
+            More articles and many interesting innovations are coming. Below a funny code snippet raises the awareness for the importance of keeping our health.
+          </p>
+
+          <pre className={styles.code}> <code> {`function unlockImmorality() { const age = parseInt(prompt("Enter your age:")); const longevityPoints = parseInt(prompt("Enter your longevity points:")); if (longevityPoints > 9000) { alert("Congratulations! You've unlocked immortality! ð"); return true; } else if (age > 120) { alert("Wow, you're already over 120 years old! Keep up the great work! ð"); return false; } else { alert("Keep earning those longevity points! You'll be immortal in no time! ðª"); return false; } }`} </code> </pre>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>2. Add your credentials to ShipFast</h3>
+          <p className={styles.p}>
+            Copy the <span className={styles.codeInline}>API URL</span> and{" "}
+            <span className={styles.codeInline}>API Key</span> from your
+            Supabase project settings and add them to your ShipFast project
+            settings. Add these files to your project:
+          </p>
+
+          <ul className={styles.ul}>
+            <li className={styles.li}>.env.local</li>
+            <li className={styles.li}>.env.production</li>
+          </ul>
+        </section>
+      </>
+    ),
+  },
 ];
