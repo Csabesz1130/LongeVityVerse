@@ -337,21 +337,6 @@ export const articles: articleType[] = [
 
           <pre className={styles.code}> <code> {`function unlockImmorality() { const age = parseInt(prompt("Enter your age:")); const longevityPoints = parseInt(prompt("Enter your longevity points:")); if (longevityPoints > 9000) { alert("Congratulations! You've unlocked immortality! ð"); return true; } else if (age > 120) { alert("Wow, you're already over 120 years old! Keep up the great work! ð"); return false; } else { alert("Keep earning those longevity points! You'll be immortal in no time! ðª"); return false; } }`} </code> </pre>
         </section>
-
-        <section>
-          <h3 className={styles.h3}>2. Add your credentials to ShipFast</h3>
-          <p className={styles.p}>
-            Copy the <span className={styles.codeInline}>API URL</span> and{" "}
-            <span className={styles.codeInline}>API Key</span> from your
-            Supabase project settings and add them to your ShipFast project
-            settings. Add these files to your project:
-          </p>
-
-          <ul className={styles.ul}>
-            <li className={styles.li}>.env.local</li>
-            <li className={styles.li}>.env.production</li>
-          </ul>
-        </section>
       </>
     ),
   },
