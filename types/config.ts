@@ -64,3 +64,11 @@ export interface ConfigProps {
     callbackUrl: string;
   };
 }
+
+export type ItemType = {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  distributorURL: string; // assuming price is a string that might include currency symbols or other text
+};
