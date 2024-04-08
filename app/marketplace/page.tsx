@@ -1,30 +1,39 @@
-// Import necessary components and libraries
-import Layout from '@/components/Layout';
-import ProductCard from '@/components/ProductCard'; // A new component for displaying products
-import { getMarketplaceItems } from '@/libs/marketplace'; // API call to fetch marketplace items
-import { useSession } from 'next-auth/react';
+// pages/marketplace/page.tsx
 
-const Marketplace = () => {
-  const { data: session } = useSession();
-  const [items, setItems] = useState([]);
+import React, { useState, useEffect } from 'react';
+// Correct the path as per your project structure. It might be something like:
+import Layout from './components/layout';
+
+// Define the type for item
+type Item = {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    iamgeUrl: string;
+    distributorURL: string;
+};
+
+// Correct the path for the ProductCard component as per your project structure
+import ProductCard from '../../components/ProductCard';
+
+const MarketplacePage = () => {
+  // Use useState and useEffect as needed in your component
+  const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
-    // Fetch marketplace items and set state
-    getMarketplaceItems().then(setItems);
+    // fetch or set items here
   }, []);
 
   return (
     <Layout>
-      <div className="container mx-auto">
-        <h1 className="text-2xl font-bold">Marketplace</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {items.map(item => (
-            <ProductCard key={item.id} item={item} />
-          ))}
-        </div>
+      <div className="marketplace">
+        {items.map((item: Item) => (
+          <ProductCard key={item.id} item={item} />
+        ))}
       </div>
     </Layout>
   );
 };
 
-export default Marketplace;
+export default MarketplacePage;
