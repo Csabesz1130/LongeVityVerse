@@ -7,13 +7,30 @@ type Item = {
     name: string;
     description: string;
     price: number;
+    imageUrl: string;
+    distributorURL: string;
 };
 
-// The item prop is now strongly typed with the 'Item' type
-const ProductCard: React.FC<{ item: Item }> = ({ item }) => {
+// components/ProductCard.tsx
+
+export const ProductCard: React.FC<{ item: Item }> = ({ item }) => {
     return (
-        <div>Implement the card UI here</div>
+      <div className="border p-4 rounded-lg shadow-lg">
+        <img src={item.imageUrl} alt={item.name} className="w-full h-auto object-cover rounded-t-lg" />
+        <div className="p-4">
+          <h2 className="text-lg font-bold">{item.name}</h2>
+          <p className="mb-4">{item.description}</p>
+          <span className="text-md font-semibold">${item.price.toFixed(2)}</span>
+          <div className="mt-4">
+            <a 
+              href={`/products/${item.id}`} // Assuming you have a routing setup for individual products
+              className="block bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded"
+            >
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
     );
-};
-
-export default ProductCard;
+  };
+  

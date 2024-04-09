@@ -10,12 +10,14 @@ type Item = {
     name: string;
     description: string;
     price: number;
-    iamgeUrl: string;
+    imageUrl: string;
     distributorURL: string;
 };
 
 // Correct the path for the ProductCard component as per your project structure
-import ProductCard from '../../components/ProductCard';
+import { ProductCard } from '@/components/ProductCard';
+
+//export { ProductCard };
 
 const MarketplacePage = () => {
   // Use useState and useEffect as needed in your component
