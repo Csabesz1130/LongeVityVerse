@@ -1,4 +1,5 @@
 // pages/marketplace/page.tsx
+'use client';
 
 import React, { useState, useEffect } from 'react';
 // Correct the path as per your project structure. It might be something like:
