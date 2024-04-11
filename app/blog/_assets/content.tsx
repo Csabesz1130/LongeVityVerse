@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import Image, { StaticImageData } from "next/image";
 import marcImg from "@/app/blog/_assets/images/authors/marc.png";
-import introducingSupabaseImg from "@/public/blog/introducing-supabase/header.png";
+import healthicon1 from "@/public/blog/iconappleorange.png";
 
 // ==================================================================================================================================================================
 // BLOG CATEGORIES ð·ï¸
@@ -217,7 +217,7 @@ export const articles: articleType[] = [
     publishedAt: "2024-04-04",
     image: {
       // The image to display in <CardArticle /> components.
-      src: introducingSupabaseImg,
+      src: healthicon1,
       // The relative URL of the same image to use in the Open Graph meta tags & the Schema Markup JSON-LD. It should be the same image as the src above.
       urlRelative: "/blog/introducing-supabase/header.jpg",
       alt: "Supabase and ShipFast logo combined",
@@ -226,7 +226,7 @@ export const articles: articleType[] = [
     content: (
       <>
         <Image
-          src={introducingSupabaseImg}
+          src={healthicon1}
           alt="Supabase and ShipFast logo combined"
           width={700}
           height={500}
@@ -295,7 +295,7 @@ export const articles: articleType[] = [
     publishedAt: "2024-04-04",
     image: {
       // The image to display in <CardArticle /> components.
-      src: introducingSupabaseImg,
+      src: healthicon1,
       // The relative URL of the same image to use in the Open Graph meta tags & the Schema Markup JSON-LD. It should be the same image as the src above.
       urlRelative: "/blog/introducing-supabase/header.jpg",
       alt: "Supabase and ShipFast logo combined",
@@ -304,7 +304,7 @@ export const articles: articleType[] = [
     content: (
       <>
         <Image
-          src={introducingSupabaseImg}
+          src={healthicon1}
           alt="Supabase and ShipFast logo combined"
           width={700}
           height={500}
