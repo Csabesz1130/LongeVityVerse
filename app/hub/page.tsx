@@ -1,7 +1,4 @@
-'use client';
-
 import { useState } from 'react';
-
 import React from 'react';
 import { getSEOTags } from "@/libs/seo";
 import ClientLayout from "@/components/LayoutClient";
