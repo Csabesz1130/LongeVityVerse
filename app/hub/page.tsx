@@ -2,7 +2,8 @@ import { useState } from 'react';
 import React from 'react';
 import { getSEOTags } from "@/libs/seo";
 import ClientLayout from "@/components/LayoutClient";
-import { BookIcon, ShoppingCartIcon, UserGroupIcon } from '@heroicons/react/outline';
+import { ShoppingCartIcon, UserGroupIcon } from '@heroicons/react/outline';
+import { BookIcon } from '@heroicons/react/outline';
 
 export const metadata = getSEOTags({
   title: "Longevity Hub",
