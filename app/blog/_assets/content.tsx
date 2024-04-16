@@ -1,7 +1,8 @@
 import type { JSX } from "react";
 import Image, { StaticImageData } from "next/image";
 import marcImg from "@/app/blog/_assets/images/authors/marc.png";
-import healthicon1 from "@/public/blog/iconappleorange.png";
+//import healthicon1 from "@/public/blog/iconappleorange.png";
+import healthicon1 from "@/app/blog/_assets/images/healthicon1.png";
 
 // ==================================================================================================================================================================
 // BLOG CATEGORIES ð·ï¸
