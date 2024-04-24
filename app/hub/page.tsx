@@ -4,8 +4,8 @@ import Post from "@/components/Post";
 
 // Mock data for generated users
 const generatedUsers = [
-  { id: 1, name: 'Jane Doe', avatar: '/path/to/avatar1.png' },
-  { id: 2, name: 'John Smith', avatar: '/path/to/avatar2.png' },
+  { id: 1, name: 'Jane Doe', avatar: '@/components/femavatar.png' },
+  { id: 2, name: 'John Smith', avatar: '@/components/manavatar.png' },
   // Add more generated user objects
 ];
 
