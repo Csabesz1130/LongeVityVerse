@@ -347,6 +347,85 @@ export const articles: articleType[] = [
     // The unique slug to use in the URL. It's also used to generate the canonical URL.
     slug: "introducing-longevity",
     // The title to display in the article page (h1). Less than 60 characters. It's also used to generate the meta title.
+    title: "Debunking common misconceptions about our health",
+    // The description of the article to display in the article page. Up to 160 characters. It's also used to generate the meta description.
+    description:
+      "Debunking common misconceptions about our health",
+    // An array of categories of the article. It's used to generate the category badges, the category filter, and more.
+    categories: [
+      categories.find((category) => category.slug === categorySlugs.feature),
+    ],
+    // The author of the article. It's used to generate a link to the author's bio page.
+    author: authors.find((author) => author.slug === authorSlugs.marc),
+    // The date of the article. It's used to generate the meta date.
+    publishedAt: "2024-04-04",
+    image: {
+      // The image to display in <CardArticle /> components.
+      src: healthicon1,
+      // The relative URL of the same image to use in the Open Graph meta tags & the Schema Markup JSON-LD. It should be the same image as the src above.
+      urlRelative: "/blog/introducing-supabase/header.jpg",
+      alt: "Supabase and ShipFast logo combined",
+    },
+    // The actual content of the article that will be shown under the <h1> title in the article page.
+    content: (
+      <>
+        <Image
+          src={healthicon1}
+          alt="Supabase and ShipFast logo combined"
+          width={700}
+          height={500}
+          priority={true}
+          className="rounded-box"
+          placeholder="blur"
+        />
+        <section>
+          <h2 className={styles.h2}>Introduction</h2>
+          <p className={styles.p}>
+          Misconception 1: If I&apos;m symptom-free, I&apos;m healthy
+
+          One of the most dangerous misconceptions is equating the absence of symptoms with good health. While it&apos;s reassuring to feel fine, many serious health conditions, such as cancer, can develop silently for years before manifesting symptoms. By the time symptoms appear, the disease may have progressed to an advanced stage, making treatment challenging and less effective. Regular screenings and health check-ups are essential for early detection and intervention.
+        
+          Misconception 2: I&apos;m not overweight, so I&apos;m healthy
+
+          Another common misconception revolves around body weight and appearance. While obesity is a significant risk factor for various health problems, including heart disease and diabetes, being at a healthy weight doesn&apos;t guarantee optimal health. Internal factors, such as blood pressure, cholesterol levels, and blood sugar levels, play a crucial role in determining overall health. Additionally, factors like diet, physical activity, and stress management are equally important indicators of well-being.
+         
+          Misconception 3: Yearly blood tests are sufficient for monitoring health
+
+          While blood tests provide valuable insights into certain aspects of our health, relying solely on yearly check-ups can be misleading. Many health conditions don&apos;t leave a distinct mark in blood work until they&apos;ve progressed significantly. Furthermore, blood tests often focus on specific markers and may overlook broader health issues. A comprehensive approach to health involves regular screenings, physical exams, and discussions with healthcare providers to address individual needs and risks.
+          
+          Misconception 4: Healthy living is only relevant in old age
+
+          Some may believe that healthy habits can wait until later in life when health concerns become more pressing. However, the habits we cultivate throughout life profoundly impact our well-being in the long term. Establishing healthy routines early, such as regular exercise, balanced nutrition, adequate sleep, and stress management, sets the foundation for a vibrant and fulfilling life. Prevention is always better than cure, and investing in health from a young age pays dividends in later years.
+          
+          Misconception 5: Health Is solely determined by genetics
+
+          While genetics undoubtedly influence our health outcomes to some extent, they&apos;re not the sole determinant. Lifestyle factors, including diet, physical activity, sleep quality, and stress management, exert significant influence over our health trajectory. Even individuals with a family history of certain diseases can mitigate risks through healthy choices and proactive healthcare practices. Understanding the interplay between genetics and lifestyle empowers us to take control of our health destiny.
+         
+          Conclusion: Embracing a proactive approach to health
+
+          Dispelling these misconceptions is essential for fostering a proactive mindset toward health. Rather than waiting for symptoms to arise or relying on superficial indicators of well-being, we must prioritize preventive measures and holistic self-care practices. Regular screenings, healthy lifestyle choices, and open communication with healthcare providers are integral parts of this proactive approach. By challenging misconceptions and embracing a preventive mindset, we can cultivate a longer, healthier, and more fulfilling life for ourselves and future generations.
+          </p>
+        </section>
+
+        <section>
+          <h3 className={styles.h3}>1. Read our post about managing you health.</h3>
+          <p className={styles.p}>
+            First, go to{" "}
+            <a href="https://longevityposts.vzy.io/the-essential-guide-to-longevity-understanding-its-importance-and-impact" className="link link-primary">
+              Longevity
+            </a>{" "}
+            Just click on the link and dive deep into it.
+            <br />
+            More articles, many interesting news and articales are coming. Below a funny code snippet raises the awareness for the importance of keeping our health.
+          </p>
+        </section>
+      </>
+    ),
+  },
+  {
+    // The unique slug to use in the URL. It's also used to generate the canonical URL.
+    slug: "introducing-longevity",
+    // The title to display in the article page (h1). Less than 60 characters. It's also used to generate the meta title.
     title: "Introducing Longevity to everyone",
     // The description of the article to display in the article page. Up to 160 characters. It's also used to generate the meta description.
     description:
