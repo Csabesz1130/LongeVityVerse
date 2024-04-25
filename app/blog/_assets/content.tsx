@@ -475,7 +475,7 @@ export const articles: articleType[] = [
   
           <h2 className={styles.h2}>Misconception 3: Yearly blood tests are sufficient for monitoring health</h2>
           <p className={styles.p}>
-            While blood tests provide valuable insights into certain aspects of our health, relying solely on yearly check-ups can be misleading. Many health conditions don't leave a distinct mark in blood work until they've progressed significantly. Furthermore, blood tests often focus on specific markers and may overlook broader health issues. A comprehensive approach to health involves regular screenings, physical exams, and discussions with healthcare providers to address individual needs and risks.
+            While blood tests provide valuable insights into certain aspects of our health, relying solely on yearly check-ups can be misleading. Many health conditions don&apos;t leave a distinct mark in blood work until they&apos;ve progressed significantly. Furthermore, blood tests often focus on specific markers and may overlook broader health issues. A comprehensive approach to health involves regular screenings, physical exams, and discussions with healthcare providers to address individual needs and risks.
           </p>
   
           <h2 className={styles.h2}>Misconception 4: Healthy living is only relevant in old age</h2>
