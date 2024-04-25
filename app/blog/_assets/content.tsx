@@ -460,17 +460,17 @@ export const articles: articleType[] = [
         <section>
           <h1 className={styles.h1}>Debunking Common Health Misconceptions</h1>
           <p className={styles.p}>
-            In our quest for well-being, we often encounter numerous health misconceptions that can mislead us and hinder our progress. By debunking these common myths, we can empower ourselves to make informed decisions and adopt a proactive approach to health. In this article, we'll explore five prevalent health misconceptions and uncover the truth behind them.
+            In our quest for well-being, we often encounter numerous health misconceptions that can mislead us and hinder our progress. By debunking these common myths, we can empower ourselves to make informed decisions and adopt a proactive approach to health. In this article, we&apos;ll explore five prevalent health misconceptions and uncover the truth behind them.
           </p>
           
-          <h2 className={styles.h2}>Misconception 1: If I'm symptom-free, I'm healthy</h2>
+          <h2 className={styles.h2}>Misconception 1: If I&apos;m symptom-free, I&apos;m healthy</h2>
           <p className={styles.p}>
-            One of the most dangerous misconceptions is equating the absence of symptoms with good health. While it's reassuring to feel fine, many serious health conditions, such as cancer, can develop silently for years before manifesting symptoms. By the time symptoms appear, the disease may have progressed to an advanced stage, making treatment challenging and less effective. Regular screenings and health check-ups are essential for early detection and intervention.
+            One of the most dangerous misconceptions is equating the absence of symptoms with good health. While it&apos;s reassuring to feel fine, many serious health conditions, such as cancer, can develop silently for years before manifesting symptoms. By the time symptoms appear, the disease may have progressed to an advanced stage, making treatment challenging and less effective. Regular screenings and health check-ups are essential for early detection and intervention.
           </p>
   
-          <h2 className={styles.h2}>Misconception 2: I'm not overweight, so I'm healthy</h2>
+          <h2 className={styles.h2}>Misconception 2: I&apos;m not overweight, so I&apos;m healthy</h2>
           <p className={styles.p}>
-            Another common misconception revolves around body weight and appearance. While obesity is a significant risk factor for various health problems, including heart disease and diabetes, being at a healthy weight doesn't guarantee optimal health. Internal factors, such as blood pressure, cholesterol levels, and blood sugar levels, play a crucial role in determining overall health. Additionally, factors like diet, physical activity, and stress management are equally important indicators of well-being.
+            Another common misconception revolves around body weight and appearance. While obesity is a significant risk factor for various health problems, including heart disease and diabetes, being at a healthy weight doesn&apos;t guarantee optimal health. Internal factors, such as blood pressure, cholesterol levels, and blood sugar levels, play a crucial role in determining overall health. Additionally, factors like diet, physical activity, and stress management are equally important indicators of well-being.
           </p>
   
           <h2 className={styles.h2}>Misconception 3: Yearly blood tests are sufficient for monitoring health</h2>
@@ -485,7 +485,7 @@ export const articles: articleType[] = [
   
           <h2 className={styles.h2}>Misconception 5: Health is solely determined by genetics</h2>
           <p className={styles.p}>
-            While genetics undoubtedly influence our health outcomes to some extent, they're not the sole determinant. Lifestyle factors, including diet, physical activity, sleep quality, and stress management, exert significant influence over our health trajectory. Even individuals with a family history of certain diseases can mitigate risks through healthy choices and proactive healthcare practices. Understanding the interplay between genetics and lifestyle empowers us to take control of our health destiny.
+            While genetics undoubtedly influence our health outcomes to some extent, they&apos;re not the sole determinant. Lifestyle factors, including diet, physical activity, sleep quality, and stress management, exert significant influence over our health trajectory. Even individuals with a family history of certain diseases can mitigate risks through healthy choices and proactive healthcare practices. Understanding the interplay between genetics and lifestyle empowers us to take control of our health destiny.
           </p>
   
           <h2 className={styles.h2}>Conclusion: Embracing a proactive approach to health</h2>
@@ -497,7 +497,7 @@ export const articles: articleType[] = [
         <section>
           <h2 className={styles.h2}>Take action today</h2>
           <p className={styles.p}>
-            Armed with the knowledge of these common health misconceptions, it's time to take proactive steps towards better health. Start by scheduling regular check-ups with your healthcare provider, even if you feel healthy. Engage in open conversations about your family history, lifestyle habits, and any concerns you may have. Remember, early detection and prevention are key to maintaining optimal well-being.
+            Armed with the knowledge of these common health misconceptions, it&apos;s time to take proactive steps towards better health. Start by scheduling regular check-ups with your healthcare provider, even if you feel healthy. Engage in open conversations about your family history, lifestyle habits, and any concerns you may have. Remember, early detection and prevention are key to maintaining optimal well-being.
           </p>
           <p className={styles.p}>
             Embrace a holistic approach to health by focusing on nourishing your body with a balanced diet, engaging in regular physical activity, prioritizing quality sleep, and managing stress effectively. Small, consistent changes in your daily routines can have a profound impact on your long-term health and vitality.
