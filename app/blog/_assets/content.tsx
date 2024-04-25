@@ -277,7 +277,7 @@ export const articles: articleType[] = [
       categories.find((category) => category.slug === categorySlugs.feature),
     ],
     // The author of the article. It's used to generate a link to the author's bio page.
-    author: authors.find((author) => author.slug === authorSlugs.marc),
+    author: authors.find((author) => author.slug === authorSlugs.csaba),
     // The date of the article. It's used to generate the meta date.
     publishedAt: "2024-04-04",
     image: {
