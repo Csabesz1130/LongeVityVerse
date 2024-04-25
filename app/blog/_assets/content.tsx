@@ -458,8 +458,8 @@ export const articles: articleType[] = [
           placeholder="blur"
         />
         <section>
-          <h2 className={styles.h2}>Introduction</h2>
-          <p className={styles.p}>
+          <h1 className={styles.h2}>Introduction</h1>
+          <h2 className={styles.h2}>
           Misconception 1: If I&apos;m symptom-free, I&apos;m healthy
 
           One of the most dangerous misconceptions is equating the absence of symptoms with good health. While it&apos;s reassuring to feel fine, many serious health conditions, such as cancer, can develop silently for years before manifesting symptoms. By the time symptoms appear, the disease may have progressed to an advanced stage, making treatment challenging and less effective. Regular screenings and health check-ups are essential for early detection and intervention.
@@ -483,7 +483,7 @@ export const articles: articleType[] = [
           Conclusion: Embracing a proactive approach to health
 
           Dispelling these misconceptions is essential for fostering a proactive mindset toward health. Rather than waiting for symptoms to arise or relying on superficial indicators of well-being, we must prioritize preventive measures and holistic self-care practices. Regular screenings, healthy lifestyle choices, and open communication with healthcare providers are integral parts of this proactive approach. By challenging misconceptions and embracing a preventive mindset, we can cultivate a longer, healthier, and more fulfilling life for ourselves and future generations.
-          </p>
+          </h2>
         </section>
 
         <section>
