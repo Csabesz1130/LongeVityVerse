@@ -522,7 +522,7 @@ export const articles: articleType[] = [
 {
   slug: "unlocking-the-secrets-of-longevity",
   title: "Unlocking the secrets of longevity: Living a life of quality and vitality",
-  description: "Discover the meaning and significance of longevity, and learn why it&apos;s not just about living longer, but living better.",
+  description: "Discover the meaning and significance of longevity, and learn why it's not just about living longer, but living better.",
   categories: [
     categories.find((category) => category.slug === categorySlugs.feature),  
   ],
