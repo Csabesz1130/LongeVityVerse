@@ -457,7 +457,7 @@ export const articles: articleType[] = [
         <h2 className={styles.h2}>The late-night lifestyle trap</h2>
         <p className={styles.p}>Picture this: it&apos;s Friday night, and invitations to gatherings and parties flood your inbox. While socializing can be uplifting, many of these events tend to unfold late into the night, disrupting our sleep schedules and compromising our sleep hygiene. The pressure to attend and be part of the fun can override our better judgment, leading to sleep deprivation and its associated health risks, including impaired cognitive function and weakened immune system.</p>
 
-        <h2 className={styles.h2}>The culture of "obligatory" drinking</h2>
+        <h2 className={styles.h2}>The culture of &apos;obligatory&apos; drinking</h2>
         <p className={styles.p}>Alcohol often takes center stage in social gatherings, where the expectation to partake can feel almost obligatory. Whether it&apos;s a casual happy hour with coworkers or a celebratory toast with friends, the pressure to drink can be palpable. Unfortunately, excessive alcohol consumption not only affects our physical health but also disrupts our sleep patterns, contributes to mood swings, and heightens the risk of accidents and long-term health complications.</p>
 
         <h2 className={styles.h2}>The anxiety of conformity</h2>
