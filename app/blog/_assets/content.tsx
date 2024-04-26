@@ -199,7 +199,7 @@ const styles: {
     "text-sm font-mono bg-base-300 px-1 py-0.5 rounded-box select-all",
 };
 
-// All the blog articles data display in the /blog/[articleId].js pages.
+// All the blog articles data disply in the /blog/[articleId].js pages.
 export const articles: articleType[] = [
   {
     // The unique slug to use in the URL. It's also used to generate the canonical URL.
