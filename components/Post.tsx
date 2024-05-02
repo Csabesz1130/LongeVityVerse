@@ -7,7 +7,7 @@ interface PostProps {
   content: string;
   likes: number;
   comments: string[];
-  postId: number;
+  postId?: number;
 }
 
 // Sample Post component to display a single post
