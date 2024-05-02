@@ -25,6 +25,14 @@ const links: {
     href: "/#faq",
     label: "FAQ",
   },
+  {
+    href: "/app/hub/page", // This is the path to the Hub page as per your project's routing structure
+    label: "Longevity Hub", // Label for the menu item
+  },
+  {
+    href: "/blog",  // Add the path to the Blog page
+    label: "Blog",  // Label for the menu item
+  },
 ];
 
 const cta: JSX.Element = <ButtonSignin extraStyle="btn-primary" />;
