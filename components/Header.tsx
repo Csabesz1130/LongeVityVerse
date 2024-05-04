@@ -26,7 +26,7 @@ const links: {
     label: "FAQ",
   },
   {
-    href: "/app/hub/page", // This is the path to the Hub page as per your project's routing structure
+    href: "/hub", // This is the path to the Hub page as per your project's routing structure
     label: "Longevity Hub", // Label for the menu item
   },
   {
