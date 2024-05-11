@@ -1,79 +1,129 @@
+/* Base Setup for Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
+html, body {
   scroll-behavior: smooth !important;
 }
 
-/* It makes the HTML progress bar filling smooth when value change. */
+/* Smooth transition for HTML progress bars */
 progress::-webkit-progress-value {
-  transition: 0.6s width ease-out;
+  transition: width 0.6s ease-out;
 }
 
-@layer base {
-  .btn-gradient {
-    @apply !bg-gradient !bg-[length:300%_300%] hover:saturate-[1.2] shadow duration-100 !border-0 !border-transparent !bg-transparent animate-shimmer disabled:!bg-none disabled:!bg-gray-500/30  !text-white;
-  }
-  .btn {
-    @apply !capitalize;
-  }
+/* Button gradients and interactions */
+.btn-gradient {
+  background-size: 300% 300%;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  transition: filter 0.1s ease-in-out;
+  border: 0;
+  text-transform: none;
+  color: white;
+  box-shadow: var(--tw-shadow);
 }
 
-/* Tailwind CSS classes for Post component */
+.btn-gradient:hover {
+  filter: saturate(1.2);
+}
 
+.btn-gradient:disabled {
+  background: none;
+  color: rgba(75, 85, 99, 0.3); /* Gray 500 with 30% opacity */
+}
+
+.btn {
+  text-transform: capitalize;
+}
+
+/* Styling for Post components */
 .post-card {
-  @apply bg-white rounded-lg shadow overflow-hidden transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.post-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .post-header {
-  @apply flex items-center space-x-4 p-4 bg-gray-50 border-b;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .post-avatar {
-  @apply w-10 h-10 rounded-full;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
 }
 
 .post-author {
-  @apply font-semibold text-lg;
+  font-weight: bold;
+  font-size: 1.125rem;
 }
 
 .post-content {
-  @apply p-4 text-gray-800 leading-relaxed;
+  padding: 1rem;
+  color: #4b5563;
+  line-height: 1.625;
 }
 
 .post-footer {
-  @apply flex justify-between items-center p-4 border-t;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
 }
 
 .like-button {
-  @apply flex items-center gap-2 text-blue-500 hover:text-blue-700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #3b82f6;
+}
+
+.like-button:hover {
+  color: #2563eb;
 }
 
 .comments-count {
-  @apply text-sm text-gray-600;
+  font-size: 0.875rem;
+  color: #9ca3af;
 }
 
-/* Icons using Tailwind CSS */
-.icon {
-  @apply fill-current w-4 h-4;
-}
-
-/* Tailwind CSS classes for Hub component */
-
+/* Hub specific styles */
 .hub-container {
-  @apply min-h-screen bg-gray-100 py-8;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding-top: 2rem;
 }
 
 .hub-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 .hub-title {
-  @apply text-3xl font-bold my-4 mx-auto text-center;
+  font-size: 1.875rem; /* 30px */
+  font-weight: bold;
+  margin: 1rem auto;
+  text-align: center;
 }
 
 .hub-content {
-  @apply flex flex-col items-center justify-center p-4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
