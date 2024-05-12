@@ -127,3 +127,29 @@ progress::-webkit-progress-value {
   justify-content: center;
   padding: 1rem;
 }
+
+/* Styles for Comment component */
+.comments-container {
+  @apply bg-gray-50 p-4 rounded-lg shadow mt-2;
+}
+
+.comment {
+  @apply mb-2 last:mb-0 text-gray-800;
+}
+
+.comments-toggle {
+  @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 cursor-pointer;
+}
+
+.comment-form {
+  @apply mt-4;
+}
+
+.comment-input {
+  @apply block w-full p-2 border rounded;
+}
+
+.submit-comment {
+  @apply mt-2 py-2 px-4 bg-green-500 text-white rounded hover:bg-green-600 cursor-pointer;
+}
+
