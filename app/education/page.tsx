@@ -1,6 +1,6 @@
 import React from 'react';
-import { LayoutClient } from './LayoutClient';  // Adjust import path as necessary
-import EducationItem from './EducationItem';    // A new component for individual items
+import LayoutClient from '../../components/LayoutClient';
+import EducationItem from '../../components/EducationItem';  // Assuming it's also in 'components'
 
 const EducationHub = () => {
   // This could be fetched from an API in the future
@@ -18,8 +18,12 @@ const EducationHub = () => {
       // More documents...
     ],
     quizzes: [
-      { id: 1, title: 'Quiz on Longevity Basics', questions: [] },
+      { id: 1, title: 'Quiz on Longevity Basics', questions: [] as any[] },
       // More quizzes...
+    ],
+    podcasts: [
+      { id: 1, title: 'Longevity and You: Episode 1', docUrl: 'path-to-podcast' },
+      // More podcasts...
     ]
   };
 
@@ -32,7 +36,7 @@ const EducationHub = () => {
             <h2>{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
             <div className="items-grid">
               {items.map(item => (
-                <EducationItem key={item.id} item={item} type={category} />
+                <EducationItem key={item.id} item={item} type={category as 'videos' | 'tutorials' | 'documents' | 'quizzes' | 'podcasts'} />
               ))}
             </div>
           </section>
