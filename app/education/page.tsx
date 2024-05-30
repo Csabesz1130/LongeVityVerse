@@ -1,67 +1,39 @@
-// Full example with getStaticProps included at the end of your page component file
-
 import React from 'react';
-import dynamic from 'next/dynamic';
-import LayoutClient from '../../components/LayoutClient';
 
-const EducationItem = dynamic(() => import('../../components/EducationItem'), {
-  ssr: false
-});
-
-interface Question {
-  id: number;
-  text: string;
-  options: string[];
-  correctAnswer: string;
-}
-
-interface ContentItem {
+// Define types for the education content
+interface EducationContent {
   id: number;
   title: string;
-  url?: string;
-  docUrl?: string;
-  questions?: Question[];
+  content: string;
 }
 
-interface EducationContent {
-  videos: ContentItem[];
-  tutorials: ContentItem[];
-  documents: ContentItem[];
-  quizzes: ContentItem[];
-  podcasts: ContentItem[];
+// Define props for the EducationHub component
+interface EducationHubProps {
+  data: EducationContent[];
 }
 
-const EducationHub = ({ educationContent }: { educationContent: EducationContent }) => {
+// Component to display education content
+const EducationHub: React.FC<EducationHubProps> = ({ data }) => {
   return (
-    <LayoutClient>
-      <div className="education-hub">
-        <h1>Longevity Education Center</h1>
-        {Object.entries(educationContent).map(([category, items]) => (
-          <section key={category}>
-            <h2>{category.charAt(0).toUpperCase() + category.slice(1)}</h2>
-            <div className="items-grid">
-              {items.map((item: ContentItem) => (
-                <EducationItem key={item.id} item={item} type={category as 'videos' | 'tutorials' | 'documents' | 'quizzes' | 'podcasts'} />
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
-    </LayoutClient>
+    <div>
+      <h1>Education Hub</h1>
+      {/* Render your education content */}
+      {data.map((item: EducationContent, index: number) => (
+        <div key={index}>
+          <h2>{item.title}</h2>
+          <p>{item.content}</p>
+        </div>
+      ))}
+    </div>
   );
 };
 
-export default EducationHub;
-
-// Assuming data-fetching from an API
-export async function getStaticProps() {
+// Fetching data within the Page component
+const Page: React.FC = async () => {
   const res = await fetch('https://api.example.com/education-content');
-  const data = await res.json();
+  const data: EducationContent[] = await res.json();
+  
+  return <EducationHub data={data} />;
+};
 
-  return {
-    props: {
-      educationContent: data,
-    },
-    revalidate: 3600, // In seconds, will re-generate the page in the background if a new request comes in after 1 hour
-  };
-}
+export default Page;
