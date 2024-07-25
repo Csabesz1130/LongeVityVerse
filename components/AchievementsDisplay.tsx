@@ -1,17 +1,28 @@
 // File: components/AchievementsDisplay.tsx
+
 import React from 'react';
-import { DashboardData } from '@/types';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { Achievement } from '@/types';
 
 interface AchievementsDisplayProps {
-  gamificationData: DashboardData['gamificationData'];
+  achievements: Achievement[];
 }
 
-const AchievementsDisplay: React.FC<AchievementsDisplayProps> = ({ gamificationData }) => {
+const AchievementsDisplay: React.FC<AchievementsDisplayProps> = ({ achievements }) => {
   return (
-    <div>
-      <h2>Achievements</h2>
-      {/* Implement the component logic here */}
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>Achievements</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {achievements.map((achievement) => (
+          <div key={achievement.id} className="mb-2">
+            <h3>{achievement.title}</h3>
+            <p>{achievement.description}</p>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
   );
 };
 

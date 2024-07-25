@@ -1,17 +1,28 @@
 // File: components/CommunityFeed.tsx
+
 import React from 'react';
-import { DashboardData } from '@/types';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { CommunityPost } from '@/types';
 
 interface CommunityFeedProps {
-  communityData: DashboardData['communityData'];
+  posts: CommunityPost[];
 }
 
-const CommunityFeed: React.FC<CommunityFeedProps> = ({ communityData }) => {
+const CommunityFeed: React.FC<CommunityFeedProps> = ({ posts }) => {
   return (
-    <div>
-      <h2>Community Feed</h2>
-      {/* Implement the component logic here */}
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>Community Feed</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {posts.map((post) => (
+          <div key={post.id} className="mb-4">
+            <h3>{post.author.name}</h3>
+            <p>{post.content}</p>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
   );
 };
 

@@ -1,5 +1,7 @@
 // File: components/HealthMetrics.tsx
+
 import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { HealthMetric, HealthMetricTrend } from '@/types';
 
 interface HealthMetricsProps {
@@ -9,10 +11,19 @@ interface HealthMetricsProps {
 
 const HealthMetrics: React.FC<HealthMetricsProps> = ({ metrics, trends }) => {
   return (
-    <div>
-      <h2>Health Metrics</h2>
-      {/* Implement the component logic here */}
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>Health Metrics</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {metrics.map((metric) => (
+          <div key={metric.name}>
+            <h3>{metric.name}</h3>
+            <p>{metric.value} {metric.unit}</p>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
   );
 };
 

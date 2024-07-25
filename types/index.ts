@@ -29,6 +29,7 @@ export interface HealthMetric {
     heartRate: number;
     sleepHours: number;
     caloriesBurned: number;
+    activeMinutes: number;
   }
   
   export interface Integration {

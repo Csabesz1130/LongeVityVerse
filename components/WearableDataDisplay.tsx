@@ -1,5 +1,7 @@
 // File: components/WearableDataDisplay.tsx
+
 import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { WearableData } from '@/types';
 
 interface WearableDataDisplayProps {
@@ -8,10 +10,16 @@ interface WearableDataDisplayProps {
 
 const WearableDataDisplay: React.FC<WearableDataDisplayProps> = ({ data }) => {
   return (
-    <div>
-      <h2>Wearable Data</h2>
-      {/* Implement the component logic here */}
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>Wearable Data</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>Steps: {data.steps}</p>
+        <p>Calories Burned: {data.caloriesBurned}</p>
+        <p>Active Minutes: {data.activeMinutes}</p>
+      </CardContent>
+    </Card>
   );
 };
 
