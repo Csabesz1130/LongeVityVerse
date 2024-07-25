@@ -43,9 +43,23 @@ const Dashboard: React.FC = () => {
 
   if (!dashboardData) return <div>Loading...</div>;
 
+  // Convert string[] to the required object structure
+  const recentTrendsObject = {
+    biologicalAge: (dashboardData.summary.recentTrends[0] as 'improving' | 'declining' | 'stable') || 'stable',
+    healthspanPrediction: (dashboardData.summary.recentTrends[1] as 'improving' | 'declining' | 'stable') || 'stable',
+    longevityScore: (dashboardData.summary.recentTrends[2] as 'improving' | 'declining' | 'stable') || 'stable'
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <PersonalizedSummary {...dashboardData.summary} />
+      <PersonalizedSummary 
+        biologicalAge={dashboardData.summary.biologicalAge}
+        chronologicalAge={dashboardData.summary.chronologicalAge}
+        healthspanPrediction={dashboardData.summary.healthspanPrediction}
+        longevityScore={dashboardData.summary.longevityScore}
+        recentTrends={recentTrendsObject}
+        topRecommendations={dashboardData.summary.topRecommendations}
+      />
       <HealthMetrics 
         metrics={dashboardData.healthMetrics} 
         trends={dashboardData.healthMetricTrends} 

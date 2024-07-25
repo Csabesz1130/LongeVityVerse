@@ -103,13 +103,23 @@ export interface WearableData {
   };
 }
 
+export interface EducationalResource {
+
+
+}
+
 export interface DashboardData {
   summary: {
     biologicalAge: number;
+    chronologicalAge: number;
     healthspanPrediction: number;
     longevityScore: number;
-    recentTrends: string[];
-    recommendations: string[];
+    recentTrends: {
+      biologicalAge: 'increasing' | 'decreasing' | 'stable';
+      healthspanPrediction: 'increasing' | 'decreasing' | 'stable';
+      longevityScore: 'increasing' | 'decreasing' | 'stable';
+    };
+    topRecommendations: string[];
   };
   healthMetrics: HealthMetric[];
   healthMetricTrends: HealthMetricTrend[];

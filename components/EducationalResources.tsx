@@ -6,6 +6,7 @@ import { Select, SelectOption } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
 import { Star } from 'lucide-react';
 import DashboardApi from '@/libs/dashboardApi';
+import { EducationalResource } from '@/types';
 
 interface Resource {
   id: string;
@@ -18,11 +19,15 @@ interface Resource {
   rating: number;
 }
 
-const EducationalResources: React.FC = () => {
-  const [resources, setResources] = useState<Resource[]>([]);
-  const [filteredResources, setFilteredResources] = useState<Resource[]>([]);
-  const [typeFilter, setTypeFilter] = useState<string>('all');
-  const [difficultyFilter, setDifficultyFilter] = useState<string>('all');
+interface EducationalResourcesProps {
+    resources: EducationalResource[];
+  }  
+
+  const EducationalResources: React.FC<EducationalResourcesProps> = ({ resources: initialResources }) => {
+    const [resources, setResources] = useState<EducationalResource[]>(initialResources);
+    const [filteredResources, setFilteredResources] = useState<EducationalResource[]>(initialResources);
+    const [typeFilter, setTypeFilter] = useState<string>('all');
+    const [difficultyFilter, setDifficultyFilter] = useState<string>('all');
 
   useEffect(() => {
     const fetchResources = async () => {

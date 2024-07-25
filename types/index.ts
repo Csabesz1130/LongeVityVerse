@@ -68,6 +68,7 @@ export interface HealthMetric {
     title: string;
     description: string;
     type: 'article' | 'video' | 'podcast';
+    difficulty: 'beginner' | 'intermediate' | 'advanced';
     url: string;
     isSaved: boolean;
     rating: number;
@@ -118,6 +119,10 @@ export interface HealthMetric {
       biologicalAge: number;
       healthspanPrediction: number;
       longevityScore: number;
+      chronologicalAge: number;
+      topHealthConcerns: string[];
+      topRecommendations: string[];
+      recentTrends: string[];
     };
     healthMetrics: HealthMetric[];
     healthMetricTrends: HealthMetricTrend[];

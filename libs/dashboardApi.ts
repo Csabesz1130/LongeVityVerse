@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Integration } from '@/types';
 import { DashboardData, HealthMetricTrend, Goal, WearableData } from '@/types';
 
 const api = axios.create({
@@ -19,6 +20,11 @@ export const DashboardApi = {
     sleepHours: number;
   }>): Promise<void> => {
     await api.post('/health-metrics', metrics);
+  },
+
+  toggleIntegration: async (integrationId: string): Promise<Integration> => {
+    const response = await api.post(`/integrations/${integrationId}/toggle`);
+    return response.data;
   },
 
   getHealthMetricTrends: async (): Promise<HealthMetricTrend[]> => {
