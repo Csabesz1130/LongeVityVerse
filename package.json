@@ -37,6 +37,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-native-health": "^1.18.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-tooltip": "^5.26.3",
     "stripe": "^13.11.0",
