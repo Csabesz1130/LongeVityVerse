@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { User } from '@/types';
 import { subscribeUserToNewsletter } from '@/libs/beehiivIntegration';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 
 interface UserProfileProps {
   user: User;

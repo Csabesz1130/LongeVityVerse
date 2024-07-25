@@ -30,7 +30,7 @@ export const subscribeUserToNewsletter = async (email: string, firstName?: strin
 
 export const getLatestNewsletterIssue = async () => {
   try {
-    const response = await beehiiv.get(`/publications/${BEEHIIV_PUBLICATION_ID}/posts?status=published&limit=1`);
+    const response = await beehiivApi.get(`/publications/${BEEHIIV_PUBLICATION_ID}/posts?status=published&limit=1`);
     return response.data.data[0];
   } catch (error) {
     console.error('Error fetching latest newsletter from Beehiiv:', error);

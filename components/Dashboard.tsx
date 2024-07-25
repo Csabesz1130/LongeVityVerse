@@ -18,7 +18,7 @@ interface DashboardProps {
 const Dashboard: React.FC<DashboardProps> = ({ data }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <PersonalizedSummary summary={data.summary} />
+      <PersonalizedSummary {...data.summary} />
       <HealthMetrics metrics={data.healthMetrics} trends={data.healthMetricTrends} />
       <GoalTracker goals={data.goals} />
       <WearableDataDisplay data={data.wearableData} />

@@ -94,10 +94,7 @@ const CommunityInteraction: React.FC = () => {
         {filteredPosts.map(post => (
           <div key={post.id} className="mb-6 p-4 border rounded">
             <div className="flex items-center mb-2">
-              <Avatar>
-                <AvatarImage src={post.author.avatarUrl} alt={post.author.name} />
-                <AvatarFallback>{post.author.name[0]}</AvatarFallback>
-              </Avatar>
+            <Avatar alt={post.author.name} fallback={post.author.name[0]} />
               <span className="font-semibold ml-2">{post.author.name}</span>
             </div>
             <p className="mb-2">{post.content}</p>

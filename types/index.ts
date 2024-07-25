@@ -98,6 +98,14 @@ export interface HealthMetric {
     healthspanPrediction: number;
     longevityScore: number;
   }
+
+  export interface User {
+    email: string;
+    firstName?: string;
+    lastName?: string;
+    isNewsletterSubscribed: boolean;
+    // Add other user properties as needed
+  }
   
   export interface DashboardData {
     user: {
