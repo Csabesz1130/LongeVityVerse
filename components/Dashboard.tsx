@@ -1,52 +1,31 @@
-// File: components/Dashboard.tsx
-
-import React, { useState, useEffect } from 'react';
-import DashboardApi from '@/libs/dashboardApi';
+// File: @/components/Dashboard.tsx
+import React from 'react';
+import { DashboardData } from '@/types';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import PersonalizedSummary from './PersonalizedSummary';
-import DataVisualization from './DataVisualization';
-import PredictiveInsights from './PredictiveInsights';
+import HealthMetrics from './HealthMetrics';
 import GoalTracker from './GoalTracker';
-import Integrations from './Integrations';
+import WearableDataDisplay from './WearableDataDisplay';
+import IntegrationsPanel from './IntegrationsPanel';
 import EducationalResources from './EducationalResources';
-import CommunityInteraction from './CommunityInteraction';
-import GamificationFeatures from './GamificationFeatures';
+import CommunityFeed from './CommunityFeed';
+import AchievementsDisplay from './AchievementsDisplay';
 
-const Dashboard: React.FC = () => {
-  const [dashboardData, setDashboardData] = useState(null);
-  const [loading, setLoading] = useState(true);
+interface DashboardProps {
+  data: DashboardData;
+}
 
-  useEffect(() => {
-    const fetchDashboardData = async () => {
-      try {
-        const data = await DashboardApi.getDashboardData();
-        setDashboardData(data);
-      } catch (error) {
-        console.error('Error fetching dashboard data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDashboardData();
-  }, []);
-
-  if (loading) {
-    return <div>Loading your personalized dashboard...</div>;
-  }
-
+const Dashboard: React.FC<DashboardProps> = ({ data }) => {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Your LongevityOne AI Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <PersonalizedSummary data={dashboardData.summary} />
-        <DataVisualization data={dashboardData.healthMetrics} />
-        <PredictiveInsights insights={dashboardData.predictiveInsights} />
-        <GoalTracker goals={dashboardData.goals} />
-        <Integrations integrations={dashboardData.integrations} />
-        <EducationalResources resources={dashboardData.educationalResources} />
-        <CommunityInteraction communityData={dashboardData.communityData} />
-        <GamificationFeatures gamificationData={dashboardData.gamificationData} />
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <PersonalizedSummary summary={data.summary} />
+      <HealthMetrics metrics={data.healthMetrics} trends={data.healthMetricTrends} />
+      <GoalTracker goals={data.goals} />
+      <WearableDataDisplay data={data.wearableData} />
+      <IntegrationsPanel integrations={data.integrations} />
+      <EducationalResources resources={data.educationalResources} />
+      <CommunityFeed communityData={data.communityData} />
+      <AchievementsDisplay gamificationData={data.gamificationData} />
     </div>
   );
 };

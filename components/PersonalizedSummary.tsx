@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Progress } from '@/components/ui/progress';
-import { Button } from '@/components/ui/button';
 import { ArrowUp, ArrowDown, Minus, Info, Activity, Brain, Heart } from 'lucide-react';
 
 interface PersonalizedSummaryProps {
@@ -40,88 +36,75 @@ const PersonalizedSummary: React.FC<PersonalizedSummaryProps> = ({
   };
 
   return (
-    <TooltipProvider>
-      <Card className="w-full">
-        <CardHeader>
-          <CardTitle className="flex justify-between items-center">
-            Your Longevity Summary
-            <Button variant="outline" size="sm" onClick={() => setShowDetails(!showDetails)}>
-              {showDetails ? 'Hide Details' : 'Show Details'}
-            </Button>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-3 gap-4 mb-4">
-            <Tooltip>
-              <TooltipTrigger className="text-center">
-                <Activity className="inline-block mr-2" />
-                <p className="text-3xl font-bold">{biologicalAge}</p>
-                <p className="text-sm text-gray-500">Biological Age</p>
-                {getTrendIcon(recentTrends.biologicalAge)}
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Your body's functional age based on various biomarkers.</p>
-              </TooltipContent>
-            </Tooltip>
+    <div className="bg-white rounded-lg shadow-md p-6 w-full">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold">Your Longevity Summary</h2>
+        <button 
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          onClick={() => setShowDetails(!showDetails)}
+        >
+          {showDetails ? 'Hide Details' : 'Show Details'}
+        </button>
+      </div>
+      <div className="grid grid-cols-3 gap-4 mb-4">
+        <div className="text-center">
+          <Activity className="inline-block mr-2" />
+          <p className="text-3xl font-bold">{biologicalAge}</p>
+          <p className="text-sm text-gray-500">Biological Age</p>
+          {getTrendIcon(recentTrends.biologicalAge)}
+          <div className="text-xs mt-2">Your body's functional age based on various biomarkers.</div>
+        </div>
+        <div className="text-center">
+          <Brain className="inline-block mr-2" />
+          <p className="text-3xl font-bold">{healthspanPrediction}</p>
+          <p className="text-sm text-gray-500">Healthspan Prediction</p>
+          {getTrendIcon(recentTrends.healthspanPrediction)}
+          <div className="text-xs mt-2">Estimated years of healthy, disease-free life.</div>
+        </div>
+        <div className="text-center">
+          <Heart className="inline-block mr-2" />
+          <p className="text-3xl font-bold">{longevityScore}</p>
+          <p className="text-sm text-gray-500">Longevity Score</p>
+          {getTrendIcon(recentTrends.longevityScore)}
+          <div className="text-xs mt-2">Overall score based on various health and lifestyle factors.</div>
+        </div>
+      </div>
 
-            <Tooltip>
-              <TooltipTrigger className="text-center">
-                <Brain className="inline-block mr-2" />
-                <p className="text-3xl font-bold">{healthspanPrediction}</p>
-                <p className="text-sm text-gray-500">Healthspan Prediction</p>
-                {getTrendIcon(recentTrends.healthspanPrediction)}
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Estimated years of healthy, disease-free life.</p>
-              </TooltipContent>
-            </Tooltip>
-
-            <Tooltip>
-              <TooltipTrigger className="text-center">
-                <Heart className="inline-block mr-2" />
-                <p className="text-3xl font-bold">{longevityScore}</p>
-                <p className="text-sm text-gray-500">Longevity Score</p>
-                {getTrendIcon(recentTrends.longevityScore)}
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Overall score based on various health and lifestyle factors.</p>
-              </TooltipContent>
-            </Tooltip>
+      {showDetails && (
+        <>
+          <div className="mt-4">
+            <h4 className="font-semibold mb-2">Age Comparison</h4>
+            <div className="flex items-center mb-2">
+              <span className="w-1/4">Chronological Age: {chronologicalAge}</span>
+              <div className="w-3/4 bg-gray-200 rounded-full h-2.5">
+                <div className="bg-blue-600 h-2.5 rounded-full" style={{width: `${(chronologicalAge / 100) * 100}%`}}></div>
+              </div>
+            </div>
+            <div className="flex items-center">
+              <span className="w-1/4">Biological Age: {biologicalAge}</span>
+              <div className="w-3/4 bg-gray-200 rounded-full h-2.5">
+                <div className="bg-blue-600 h-2.5 rounded-full" style={{width: `${(biologicalAge / 100) * 100}%`}}></div>
+              </div>
+            </div>
           </div>
 
-          {showDetails && (
-            <>
-              <div className="mt-4">
-                <h4 className="font-semibold mb-2">Age Comparison</h4>
-                <div className="flex items-center">
-                  <span className="w-1/4">Chronological Age: {chronologicalAge}</span>
-                  <Progress value={(chronologicalAge / 100) * 100} className="w-3/4" />
-                </div>
-                <div className="flex items-center mt-2">
-                  <span className="w-1/4">Biological Age: {biologicalAge}</span>
-                  <Progress value={(biologicalAge / 100) * 100} className="w-3/4" />
-                </div>
-              </div>
-
-              <div className="mt-4">
-                <h4 className="font-semibold mb-2">Top Recommendations</h4>
-                <ul className="list-disc pl-5">
-                  {topRecommendations.map((recommendation, index) => (
-                    <li key={index}>{recommendation}</li>
-                  ))}
-                </ul>
-              </div>
-            </>
-          )}
-
-          <div className="mt-4 text-center">
-            <Button variant="link" className="text-sm">
-              View Detailed Report <Info className="inline-block ml-1" size={16} />
-            </Button>
+          <div className="mt-4">
+            <h4 className="font-semibold mb-2">Top Recommendations</h4>
+            <ul className="list-disc pl-5">
+              {topRecommendations.map((recommendation, index) => (
+                <li key={index}>{recommendation}</li>
+              ))}
+            </ul>
           </div>
-        </CardContent>
-      </Card>
-    </TooltipProvider>
+        </>
+      )}
+
+      <div className="mt-4 text-center">
+        <button className="text-blue-500 underline">
+          View Detailed Report <Info className="inline-block ml-1" size={16} />
+        </button>
+      </div>
+    </div>
   );
 };
 

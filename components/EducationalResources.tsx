@@ -1,7 +1,9 @@
+// File: components/EducationalResources.tsx
+
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Select, SelectOption } from '@/components/ui/Select';
+import { Button } from '@/components/ui/Button';
 import { Star } from 'lucide-react';
 import DashboardApi from '@/libs/dashboardApi';
 
@@ -50,31 +52,21 @@ const EducationalResources: React.FC = () => {
   };
 
   return (
-    <Card className="w-full">
+    <Card>
       <CardHeader>
         <CardTitle>Educational Resources</CardTitle>
         <div className="flex gap-4">
-          <Select onValueChange={setTypeFilter}>
-            <SelectTrigger>
-              <SelectValue placeholder="Filter by type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Types</SelectItem>
-              <SelectItem value="article">Articles</SelectItem>
-              <SelectItem value="video">Videos</SelectItem>
-              <SelectItem value="podcast">Podcasts</SelectItem>
-            </SelectContent>
+          <Select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
+            <SelectOption value="all">All Types</SelectOption>
+            <SelectOption value="article">Articles</SelectOption>
+            <SelectOption value="video">Videos</SelectOption>
+            <SelectOption value="podcast">Podcasts</SelectOption>
           </Select>
-          <Select onValueChange={setDifficultyFilter}>
-            <SelectTrigger>
-              <SelectValue placeholder="Filter by difficulty" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Levels</SelectItem>
-              <SelectItem value="beginner">Beginner</SelectItem>
-              <SelectItem value="intermediate">Intermediate</SelectItem>
-              <SelectItem value="advanced">Advanced</SelectItem>
-            </SelectContent>
+          <Select value={difficultyFilter} onChange={(e) => setDifficultyFilter(e.target.value)}>
+            <SelectOption value="all">All Levels</SelectOption>
+            <SelectOption value="beginner">Beginner</SelectOption>
+            <SelectOption value="intermediate">Intermediate</SelectOption>
+            <SelectOption value="advanced">Advanced</SelectOption>
           </Select>
         </div>
       </CardHeader>
@@ -91,7 +83,6 @@ const EducationalResources: React.FC = () => {
               <div className="flex items-center">
                 <Button 
                   variant="outline" 
-                  size="sm" 
                   onClick={() => handleSave(resource.id)}
                   className="mr-2"
                 >
