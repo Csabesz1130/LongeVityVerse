@@ -36,6 +36,11 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    healthKit: {
+      steps: Number,
+      heartRate: Number,
+      sleepHours: Number,
+    },
   },
   {
     timestamps: true,
