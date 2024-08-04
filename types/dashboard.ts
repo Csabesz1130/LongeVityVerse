@@ -3,6 +3,7 @@
 export interface HealthMetric {
   name: string;
   data: { date: string; value: number }[];
+  value: number;
 }
 
 export interface HealthMetricTrend extends HealthMetric {
@@ -66,6 +67,12 @@ export interface CommunityPost {
   isLiked: boolean;
 }
 
+export interface EnhancedHealthMetric extends HealthMetric {
+  min: number;
+  max: number;
+  unit: string;
+}
+
 export interface Challenge {
   id: string;
   title: string;
@@ -122,6 +129,7 @@ export interface DashboardData {
     topRecommendations: string[];
   };
   healthMetrics: HealthMetric[];
+  enhancedHealthMetrics: EnhancedHealthMetric[];
   healthMetricTrends: HealthMetricTrend[];
   predictiveInsights: PredictiveInsight[];
   goals: Goal[];
