@@ -4,6 +4,7 @@ export interface HealthMetric {
   name: string;
   data: { date: string; value: number }[];
   value: number;
+  unit: string; 
 }
 
 export interface HealthMetricTrend extends HealthMetric {
@@ -108,11 +109,6 @@ export interface WearableData {
     duration: number;
     quality: 'poor' | 'fair' | 'good' | 'excellent';
   };
-}
-
-export interface EducationalResource {
-
-
 }
 
 export interface DashboardData {

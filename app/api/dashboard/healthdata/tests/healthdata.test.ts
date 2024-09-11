@@ -1,7 +1,7 @@
+import { jest, describe, beforeEach, it, expect } from '@jest/globals';
 import { createMocks } from 'node-mocks-http';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { POST, GET } from '../route';
-import connectToDatabase from "@/libs/mongoose";
 import User from '@/models/User';
 import { getServerSession } from "next-auth/next";
 
@@ -26,7 +26,7 @@ describe('Health Data API', () => {
 
   describe('POST /api/dashboard/healthdata', () => {
     it('should update health data for authenticated user', async () => {
-      const { req, res } = createMocks<NextApiRequest, NextApiResponse>({
+      const { req } = createMocks<NextApiRequest, NextApiResponse>({
         method: 'POST',
         body: {
           platform: 'appleHealth',
@@ -34,59 +34,65 @@ describe('Health Data API', () => {
         },
       });
 
-      (getServerSession as jest.Mock).mockResolvedValue({ user: { email: 'test@example.com' } });
-      (User.findOneAndUpdate as jest.Mock).mockResolvedValue({ email: 'test@example.com' });
+      (getServerSession as jest.MockedFunction<typeof getServerSession>).mockResolvedValue({
+        user: { email: 'test@example.com' },
+      } as any);
+      
+      (User.findOneAndUpdate as jest.MockedFunction<typeof User.findOneAndUpdate>).mockResolvedValue({
+        email: 'test@example.com',
+      } as any);
 
-      await POST(req as any, res as any);
+      const response = await POST(req as unknown as Request);
+      const responseData = await response.json();
 
-      expect(res._getStatusCode()).toBe(200);
-      expect(JSON.parse(res._getData())).toEqual({ message: 'Health data updated successfully' });
+      expect(response.status).toBe(200);
+      expect(responseData).toEqual({ message: 'Health data updated successfully' });
     });
 
     it('should return 401 for unauthenticated user', async () => {
-      const { req, res } = createMocks<NextApiRequest, NextApiResponse>({
+      const { req } = createMocks<NextApiRequest, NextApiResponse>({
         method: 'POST',
       });
 
-      (getServerSession as jest.Mock).mockResolvedValue(null);
+      (getServerSession as jest.MockedFunction<typeof getServerSession>).mockResolvedValue(null);
 
-      await POST(req as any, res as any);
+      const response = await POST(req as unknown as Request);
+      const responseData = await response.json();
 
-      expect(res._getStatusCode()).toBe(401);
-      expect(JSON.parse(res._getData())).toEqual({ error: 'Unauthorized' });
+      expect(response.status).toBe(401);
+      expect(responseData).toEqual({ error: 'Unauthorized' });
     });
   });
 
   describe('GET /api/dashboard/healthdata', () => {
     it('should return health data for authenticated user', async () => {
-      const { req, res } = createMocks<NextApiRequest, NextApiResponse>({
-        method: 'GET',
-      });
-
       const mockHealthData = {
         appleHealth: { steps: 10000, heartRate: 70, sleepHours: 8 },
       };
 
-      (getServerSession as jest.Mock).mockResolvedValue({ user: { email: 'test@example.com' } });
-      (User.findOne as jest.Mock).mockResolvedValue({ healthData: mockHealthData });
+      (getServerSession as jest.MockedFunction<typeof getServerSession>).mockResolvedValue({
+        user: { email: 'test@example.com' },
+      } as any);
+      
+      (User.findOne as jest.MockedFunction<typeof User.findOne>).mockResolvedValue({
+        healthData: mockHealthData,
+      } as any);
 
-      await GET(req as any, res as any);
+      const response = await GET();
+      const responseData = await response.json();
 
-      expect(res._getStatusCode()).toBe(200);
-      expect(JSON.parse(res._getData())).toEqual(mockHealthData);
+      expect(response.status).toBe(200);
+      expect(responseData).toEqual(mockHealthData);
     });
 
     it('should return 401 for unauthenticated user', async () => {
-      const { req, res } = createMocks<NextApiRequest, NextApiResponse>({
-        method: 'GET',
-      });
+      (getServerSession as jest.MockedFunction<typeof getServerSession>).mockResolvedValue(null);
 
-      (getServerSession as jest.Mock).mockResolvedValue(null);
+      const response = await GET();
+      const responseData = await response.json();
 
-      await GET(req as any, res as any);
-
-      expect(res._getStatusCode()).toBe(401);
-      expect(JSON.parse(res._getData())).toEqual({ error: 'Unauthorized' });
+      expect(response.status).toBe(401);
+      expect(responseData).toEqual({ error: 'Unauthorized' });
     });
   });
 });
