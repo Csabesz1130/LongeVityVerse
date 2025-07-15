@@ -88,6 +88,16 @@ export async function updateHealthData(data: any): Promise<void> {
   }
 }
 
+export async function setUserGoal(goal: any): Promise<void> {
+  try {
+    await apiClient.post('/dashboard/goals', goal);
+    toast.success("Goal set successfully");
+  } catch (error) {
+    console.error("Error setting goal:", error);
+    throw error;
+  }
+}
+
 // You can add more dashboard-related API functions here as needed
 
 export default apiClient;

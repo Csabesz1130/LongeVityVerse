@@ -7,6 +7,7 @@ import BiologicalAgeWidget from "./BiologicalAgeWidget";
 import HealthMetricsWidget from "./HealthMetricsWidget";
 import LifestyleRecommendationsWidget from "./LifestyleRecommendationsWidget";
 import LongevityScoreWidget from "./LongevityScoreWidget";
+import HealthDataUpdateModal from "./HealthDataUpdateModal";
 import { fetchDashboardData } from "@/libs/api";
 import { DashboardData } from "@/types/dashboard";
 import ButtonGradient from "@/components/ButtonGradient";
@@ -14,6 +15,7 @@ import ButtonGradient from "@/components/ButtonGradient";
 export default function DashboardContent() {
   const [dashboardData, setDashboardData] = useState<DashboardData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     loadDashboardData();
@@ -32,6 +34,15 @@ export default function DashboardContent() {
     }
   };
 
+  const handleUpdateHealthData = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleDataUpdated = () => {
+    // Újratöltjük a dashboard adatokat a frissítés után
+    loadDashboardData();
+  };
+
   if (isLoading) {
     return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
@@ -42,15 +53,24 @@ export default function DashboardContent() {
       {dashboardData ? (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <BiologicalAgeWidget 
-              biologicalAge={dashboardData.biologicalAge} 
-              chronologicalAge={dashboardData.chronologicalAge} 
+            <BiologicalAgeWidget
+              biologicalAge={dashboardData.summary.biologicalAge}
+              chronologicalAge={dashboardData.summary.chronologicalAge}
             />
-            <LongevityScoreWidget score={dashboardData.longevityScore} />
+            <LongevityScoreWidget score={dashboardData.summary.longevityScore} />
             <HealthMetricsWidget metrics={dashboardData.healthMetrics} />
-            <LifestyleRecommendationsWidget recommendations={dashboardData.recommendations} />
+            <LifestyleRecommendationsWidget recommendations={dashboardData.summary.topRecommendations} />
           </div>
-          <ButtonGradient title="Update Health Data" onClick={() => {/* TODO: Implement update health data flow */}} />
+          <ButtonGradient
+            title="Update Health Data"
+            onClick={handleUpdateHealthData}
+          />
+
+          <HealthDataUpdateModal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            onDataUpdated={handleDataUpdated}
+          />
         </>
       ) : (
         <p>Failed to load dashboard data. Please try again later.</p>

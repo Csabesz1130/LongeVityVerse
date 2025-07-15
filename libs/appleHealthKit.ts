@@ -1,4 +1,42 @@
-import AppleHealthKit, { HealthKitPermissions, HealthValue } from 'react-native-health';
+// Mock React Native Health for web environment
+const AppleHealthKit = {
+  Constants: {
+    Permissions: {
+      Steps: 'Steps',
+      HeartRate: 'HeartRate',
+      SleepAnalysis: 'SleepAnalysis',
+    },
+  },
+  initHealthKit: (permissions: any, callback: (error: string | null) => void) => {
+    // Mock successful authorization
+    callback(null);
+  },
+  getStepCount: (options: any, callback: (error: string | null, results: any) => void) => {
+    // Mock step count data
+    callback(null, { value: 8500 });
+  },
+  getHeartRateSamples: (options: any, callback: (error: string | null, results: any) => void) => {
+    // Mock heart rate data
+    callback(null, { value: 72 });
+  },
+  getSleepSamples: (options: any, callback: (error: string | null, results: any) => void) => {
+    // Mock sleep data
+    callback(null, { value: 7.5 });
+  },
+};
+
+interface HealthKitPermissions {
+  permissions: {
+    read: string[];
+    write: string[];
+  };
+}
+
+interface HealthValue {
+  value: number;
+  startDate?: string;
+  endDate?: string;
+}
 
 const permissions: HealthKitPermissions = {
   permissions: {
@@ -13,7 +51,7 @@ const permissions: HealthKitPermissions = {
 
 export const requestAuthorization = (): Promise<boolean> => {
   return new Promise((resolve, reject) => {
-    AppleHealthKit.initHealthKit(permissions, (error: string) => {
+    AppleHealthKit.initHealthKit(permissions, (error: string | null) => {
       if (error) {
         console.log('[ERROR] Cannot grant permissions');
         reject(false);
@@ -34,7 +72,7 @@ export const fetchHealthData = async (): Promise<{
   const stepsData: HealthValue = await new Promise((resolve, reject) => {
     AppleHealthKit.getStepCount(
       { startDate: startDate.toISOString() },
-      (error: string, results: HealthValue) => {
+      (error: string | null, results: HealthValue) => {
         if (error) {
           reject(error);
         }
@@ -46,7 +84,7 @@ export const fetchHealthData = async (): Promise<{
   const heartRateData: HealthValue = await new Promise((resolve, reject) => {
     AppleHealthKit.getHeartRateSamples(
       { startDate: startDate.toISOString() },
-      (error: string, results: HealthValue) => {
+      (error: string | null, results: HealthValue) => {
         if (error) {
           reject(error);
         }
@@ -58,7 +96,7 @@ export const fetchHealthData = async (): Promise<{
   const sleepData: HealthValue = await new Promise((resolve, reject) => {
     AppleHealthKit.getSleepSamples(
       { startDate: startDate.toISOString() },
-      (error: string, results: HealthValue) => {
+      (error: string | null, results: HealthValue) => {
         if (error) {
           reject(error);
         }

@@ -1,10 +1,9 @@
 // File: components/dashboard/LifestyleRecommendationsWidget.tsx
 
 import React from 'react';
-import { Recommendation } from '@/types/dashboard';
 
 interface LifestyleRecommendationsWidgetProps {
-  recommendations: Recommendation[];
+  recommendations: string[];
 }
 
 const LifestyleRecommendationsWidget: React.FC<LifestyleRecommendationsWidgetProps> = ({ recommendations }) => {
@@ -14,7 +13,7 @@ const LifestyleRecommendationsWidget: React.FC<LifestyleRecommendationsWidgetPro
       <ul className="space-y-4">
         {recommendations.map((rec, index) => (
           <li key={index} className="bg-gray-50 p-3 rounded">
-            <span className="font-semibold text-primary">{rec.category}:</span> {rec.text}
+            <span className="text-gray-700">{rec}</span>
           </li>
         ))}
       </ul>

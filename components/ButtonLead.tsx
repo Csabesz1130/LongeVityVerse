@@ -9,13 +9,13 @@ import apiClient from "@/libs/api";
 // For instance: A popup to send a freebie, joining a waitlist, etc.
 // It calls the /api/lead/route.js route and store a Lead document in the database
 const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [email, setEmail] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e?.preventDefault();
+    e.preventDefault();
 
     setIsLoading(true);
     try {
@@ -24,7 +24,9 @@ const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
       toast.success("Thanks for joining the waitlist!");
 
       // just remove the focus on the input
-      inputRef.current.blur();
+      if (inputRef.current) {
+        inputRef.current.blur();
+      }
       setEmail("");
       setIsDisabled(true);
     } catch (error) {
@@ -33,6 +35,7 @@ const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
       setIsLoading(false);
     }
   };
+
   return (
     <form
       className={`w-full max-w-xs space-y-3 ${extraStyle ? extraStyle : ""}`}
@@ -46,7 +49,7 @@ const ButtonLead = ({ extraStyle }: { extraStyle?: string }) => {
         autoComplete="email"
         placeholder="tom@cruise.com"
         className="input input-bordered w-full placeholder:opacity-60"
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
       />
 
       <button
