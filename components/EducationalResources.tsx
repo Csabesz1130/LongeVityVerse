@@ -8,16 +8,16 @@ import { Star } from 'lucide-react';
 import DashboardApi from '@/libs/dashboardApi';
 import { EducationalResource } from '@/types';
 
-interface Resource {
-  id: string;
-  title: string;
-  description: string;
-  type: 'article' | 'video' | 'podcast';
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
-  url: string;
-  isSaved: boolean;
-  rating: number;
-}
+// interface Resource { // TODO: Remove if not needed
+//   id: string;
+//   title: string;
+//   description: string;
+//   type: 'article' | 'video' | 'podcast';
+//   difficulty: 'beginner' | 'intermediate' | 'advanced';
+//   url: string;
+//   isSaved: boolean;
+//   rating: number;
+// }
 
 interface EducationalResourcesProps {
     resources: EducationalResource[];

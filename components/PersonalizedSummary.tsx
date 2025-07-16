@@ -52,7 +52,7 @@ const PersonalizedSummary: React.FC<PersonalizedSummaryProps> = ({
           <p className="text-3xl font-bold">{biologicalAge}</p>
           <p className="text-sm text-gray-500">Biological Age</p>
           {getTrendIcon(recentTrends.biologicalAge)}
-          <div className="text-xs mt-2">Your body's functional age based on various biomarkers.</div>
+          <div className="text-xs mt-2">Your body&apos;s functional age based on various biomarkers.</div>
         </div>
         <div className="text-center">
           <Brain className="inline-block mr-2" />

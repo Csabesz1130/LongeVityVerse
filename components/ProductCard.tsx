@@ -1,6 +1,7 @@
 // components/ProductCard.tsx
 
 import React from 'react';
+import Image from 'next/image';
 
 type Item = {
     id: number;
@@ -16,7 +17,7 @@ type Item = {
 export const ProductCard: React.FC<{ item: Item }> = ({ item }) => {
     return (
       <div className="border p-4 rounded-lg shadow-lg">
-        <img src={item.imageUrl} alt={item.name} className="w-full h-auto object-cover rounded-t-lg" />
+        <Image src={item.imageUrl} alt={item.name} width={400} height={300} className="w-full h-auto object-cover rounded-t-lg" />
         <div className="p-4">
           <h2 className="text-lg font-bold">{item.name}</h2>
           <p className="mb-4">{item.description}</p>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/Avatar';
+import { Avatar } from '@/components/ui/Avatar';
 import { ThumbsUp, MessageSquare, Search } from 'lucide-react';
 import DashboardApi from '@/libs/dashboardApi';
 

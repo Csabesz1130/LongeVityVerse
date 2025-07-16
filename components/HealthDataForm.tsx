@@ -61,25 +61,25 @@ const HealthDataForm: React.FC<HealthDataFormProps> = ({ onSuccess, initialData 
         }));
     };
 
-    const handleNutritionChange = (field: string, value: number) => {
-        setFormData(prev => ({
-            ...prev,
-            nutritionData: {
-                ...prev.nutritionData,
-                [field]: value
-            }
-        }));
-    };
+    // const handleNutritionChange = (field: string, value: number) => {
+    //     setFormData(prev => ({
+    //         ...prev,
+    //         nutritionData: {
+    //             ...prev.nutritionData,
+    //             [field]: value
+    //         }
+    //     }));
+    // };
 
-    const handleSleepDataChange = (field: string, value: number) => {
-        setFormData(prev => ({
-            ...prev,
-            sleepData: {
-                ...prev.sleepData,
-                [field]: value
-            }
-        }));
-    };
+    // const handleSleepDataChange = (field: string, value: number) => {
+    //     setFormData(prev => ({
+    //         ...prev,
+    //         sleepData: {
+    //             ...prev.sleepData,
+    //             [field]: value
+    //         }
+    //     }));
+    // };
 
     const validateForm = (): boolean => {
         const newErrors: Record<string, string> = {};
@@ -115,7 +115,7 @@ const HealthDataForm: React.FC<HealthDataFormProps> = ({ onSuccess, initialData 
         try {
             // Remove undefined values before sending
             const cleanData = Object.fromEntries(
-                Object.entries(formData).filter(([_, value]) => value !== undefined)
+                Object.entries(formData).filter(([, value]) => value !== undefined)
             );
 
             await updateHealthData(cleanData);

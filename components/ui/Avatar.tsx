@@ -1,6 +1,7 @@
 // File: components/ui/Avatar.tsx
 
 import React from 'react';
+import Image from 'next/image';
 
 interface AvatarProps {
   src?: string;
@@ -22,8 +23,8 @@ export const Avatar: React.FC<AvatarProps> = ({ src, alt, fallback }) => {
   );
 };
 
-export const AvatarImage: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = (props) => (
-  <img {...props} className="w-full h-full object-cover" />
+export const AvatarImage: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({ alt, ...props }) => (
+  <Image {...props} alt={alt || ''} className="w-full h-full object-cover" fill />
 );
 
 export const AvatarFallback: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => (

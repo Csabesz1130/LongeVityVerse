@@ -9,7 +9,7 @@ interface HealthMetricsProps {
   trends: HealthMetricTrend[];
 }
 
-const HealthMetrics: React.FC<HealthMetricsProps> = ({ metrics, trends }) => {
+const HealthMetrics: React.FC<HealthMetricsProps> = ({ metrics }) => {
   return (
     <Card>
       <CardHeader>

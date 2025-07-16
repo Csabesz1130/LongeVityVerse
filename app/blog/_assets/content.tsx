@@ -3,7 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import marcImg from "@/app/blog/_assets/images/authors/marc.png";
 //import healthicon1 from "@/public/blog/iconappleorange.png";
 import healthicon1 from "@/app/blog/_assets/images/authors/iconhealthleaf.png";
-import iconappleorange from "@/app/blog/_assets/images/authors/iconappleorange.png";
+// import iconappleorange from "@/app/blog/_assets/images/authors/iconappleorange.png"; // TODO: Use this icon when needed
 
 // ==================================================================================================================================================================
 // BLOG CATEGORIES ð·ï¸

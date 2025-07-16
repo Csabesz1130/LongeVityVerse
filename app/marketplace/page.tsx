@@ -22,10 +22,11 @@ import { ProductCard } from '@/components/ProductCard';
 
 const MarketplacePage = () => {
   // Use useState and useEffect as needed in your component
-  const [items, setItems] = useState<Item[]>([]);
+  const [items] = useState<Item[]>([]);
 
   useEffect(() => {
     // fetch or set items here
+    // TODO: Implement items fetching logic
   }, []);
 
   return (

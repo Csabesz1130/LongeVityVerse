@@ -11,7 +11,7 @@ interface PostProps {
 }
 
 // Post component to display a single post
-const Post: React.FC<PostProps> = ({ id, author, avatar, content, likes, comments }) => {
+const Post: React.FC<PostProps> = ({ author, avatar, content, likes, comments }) => {
   const [likeCount, setLikeCount] = useState(likes);
 
   const handleLike = () => {

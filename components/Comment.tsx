@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface CommentProps {
   comments: string[]; // Array of comments to display
   postId: number;
-  addComment: (postId: number, comment: string) => void;
+  addComment: (postId: number, commentText: string) => void;
 }
 
 const Comment: React.FC<CommentProps> = ({ comments, postId, addComment }) => {

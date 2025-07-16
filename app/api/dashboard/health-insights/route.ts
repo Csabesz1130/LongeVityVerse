@@ -184,7 +184,7 @@ function generateComprehensiveInsights(user: any): any {
     // Calculate trend analysis (simplified for now)
     if (healthData?.historicalData && healthData.historicalData.length > 1) {
         const recent = healthData.historicalData.slice(-7); // Last 7 entries
-        const previous = healthData.historicalData.slice(-14, -7); // 7 entries before that
+        // const previous = healthData.historicalData.slice(-14, -7); // 7 entries before that - TODO: implement trend comparison
 
         insights.trends = {
             steps: recent.length > 0 ? 'stable' : 'insufficient_data',
