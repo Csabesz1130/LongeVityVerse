@@ -59,18 +59,40 @@ export async function GET() {
       }
     }
 
-    // 4. Create a summary with sensible default values (simple heuristics).
+    // 4. Build summary using real user data where possible.
+    // Biological age – rudimentary estimation based on resting heart rate.
+    // Falls back to 40 if data missing.
+    const biologicalAge = typeof healthKit?.heartRate === 'number'
+      ? Math.max(20, Math.min(90, 80 - Math.round((healthKit.heartRate - 60) / 2)))
+      : 40;
+
+    // Chronological age – cannot be calculated without DOB, so we default for now.
+    // You can extend the User schema with a dateOfBirth field to improve this.
+    const chronologicalAge = 40;
+
+    // Longevity score – use the virtual healthScore if available, otherwise fallback.
+    // healthScore is calculated in the User schema using various metrics.
+    const longevityScore = (user as any).healthScore ?? 80;
+
+    // Pull the latest recommendations from stored insights.
+    const recommendationsRaw = (user as any).healthData?.insights ?? [];
+    const topRecommendations = recommendationsRaw
+      .filter((insight: any) => insight.type === 'recommendation')
+      .sort((a: any, b: any) => (b.createdAt as any) - (a.createdAt as any))
+      .slice(0, 5)
+      .map((rec: any) => rec.title || rec.description || 'Stay healthy');
+
     const summary: DashboardData['summary'] = {
-      biologicalAge: healthKit?.heartRate ? Math.max(20, Math.min(90, 80 - Math.round((healthKit.heartRate - 60) / 2))) : 40,
-      chronologicalAge: 40, // Could be calculated from DOB when available
-      healthspanPrediction: 85,
-      longevityScore: 80,
+      biologicalAge,
+      chronologicalAge,
+      healthspanPrediction: 85, // TODO: derive from longitudinal data
+      longevityScore,
       recentTrends: {
-        biologicalAge: 'stable',
+        biologicalAge: 'stable', // TODO: implement trend calculation
         healthspanPrediction: 'stable',
         longevityScore: 'stable',
       },
-      topRecommendations: [
+      topRecommendations: topRecommendations.length > 0 ? topRecommendations : [
         'Stay active every day',
         'Prioritise quality sleep',
       ],
