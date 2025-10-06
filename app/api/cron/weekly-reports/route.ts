@@ -15,7 +15,10 @@ export async function POST() {
     await connectDB();
     const users = await User.find({}).select("_id").lean();
 
-    const events = users.map((u: any) => ({ name: "user/weekly-report", data: { userId: String(u._id) } }));
+    const events = users.map((u: any) => ({ 
+      name: "user/weekly-report" as const, 
+      data: { userId: String(u._id) } 
+    }));
     if (events.length > 0) {
       await inngest.send(events);
     }

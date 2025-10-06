@@ -43,7 +43,7 @@ export async function GET(
 
         const response: CommentsResponse = {
             success: true,
-            data: comments,
+            data: comments as any,
             message: 'Comments retrieved successfully'
         };
 
