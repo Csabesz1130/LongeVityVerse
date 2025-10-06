@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { handleGoogleFitCallback } from '@/libs/googleFit';
 
 const GoogleFitCallback = () => {
     const router = useRouter();
@@ -34,9 +33,10 @@ const GoogleFitCallback = () => {
                     return;
                 }
 
-                const success = await handleGoogleFitCallback(code);
-
-                if (success) {
+                // Call the API route instead of direct library import
+                const response = await fetch(`/api/auth/google-fit/callback?code=${code}`);
+                
+                if (response.ok) {
                     setStatus('success');
                     setMessage('Google Fit connected successfully! Redirecting...');
                     setTimeout(() => {

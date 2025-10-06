@@ -2,6 +2,10 @@
 
 import { HealthMetric } from '@/types/dashboard';
 
+export function getRecommendations(healthMetrics: HealthMetric[]): string[] {
+  return generatePersonalizedRecommendations(healthMetrics);
+}
+
 export function generatePersonalizedRecommendations(healthMetrics: HealthMetric[]): string[] {
   const recommendations: string[] = [];
 

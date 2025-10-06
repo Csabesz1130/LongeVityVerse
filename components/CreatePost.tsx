@@ -115,7 +115,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPostCreated, currentUserId })
                 >
                     <div className="flex items-center justify-center">
                         <span className="text-2xl mr-2">✏️</span>
-                        <span>What's on your mind?</span>
+                        <span>What&apos;s on your mind?</span>
                     </div>
                 </button>
             </div>

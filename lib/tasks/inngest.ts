@@ -35,6 +35,34 @@ type Events = {
       olderThan: string; // ISO date
     };
   };
+  "notification/review.assigned": {
+    data: {
+      reviewId: string;
+      reviewerId: string;
+      contentId: string;
+    };
+  };
+  "notification/review.complete": {
+    data: {
+      contentId: string;
+      authorId: string;
+      finalStatus: string;
+      avgScore: number;
+    };
+  };
+  "health/sync.completed": {
+    data: {
+      userId: string;
+      source: "google_fit" | "fitbit" | "apple_healthkit";
+      recordsProcessed: number;
+    };
+  };
+  "health/insights.ready": {
+    data: {
+      userId: string;
+      period: "daily" | "weekly" | "monthly";
+    };
+  };
 };
 
 export const inngest = new Inngest({

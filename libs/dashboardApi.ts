@@ -130,4 +130,8 @@ export const DashboardApi = {
   },
 };
 
+export function getDashboardStats() {
+  return DashboardApi.getDashboardData();
+}
+
 export default DashboardApi;

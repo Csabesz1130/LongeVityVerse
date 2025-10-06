@@ -1,38 +1,39 @@
-import { NextResponse } from "next/server";
-import { google } from "googleapis";
-import { connectDB } from "@/lib/db/mongodb";
-import User from "@/lib/db/models/User";
+import { NextRequest, NextResponse } from 'next/server';
+import { handleGoogleFitCallback } from '@/libs/googleFit';
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const code = searchParams.get("code");
-    const userId = searchParams.get("state");
-    if (!code || !userId) return NextResponse.json({ ok: false, error: "Missing code or state" }, { status: 400 });
+    const code = searchParams.get('code');
+    const error = searchParams.get('error');
 
-    const oauth2Client = new google.auth.OAuth2(
-      process.env.GOOGLE_FIT_CLIENT_ID,
-      process.env.GOOGLE_FIT_CLIENT_SECRET,
-      process.env.GOOGLE_FIT_REDIRECT_URI
-    );
-    const { tokens } = await oauth2Client.getToken(code);
+    if (error) {
+      return NextResponse.redirect(
+        new URL(`/integrations?error=${encodeURIComponent(error)}`, request.url)
+      );
+    }
 
-    await connectDB();
-    await User.findByIdAndUpdate(userId, {
-      $set: {
-        "healthIntegrations.googleFit": {
-          accessToken: tokens.access_token,
-          refreshToken: tokens.refresh_token,
-          expiresAt: tokens.expiry_date ? new Date(tokens.expiry_date) : new Date(Date.now() + 3600 * 1000),
-          connected: true,
-        },
-      },
-    });
+    if (!code) {
+      return NextResponse.redirect(
+        new URL('/integrations?error=no_code', request.url)
+      );
+    }
 
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    const success = await handleGoogleFitCallback(code);
+
+    if (success) {
+      return NextResponse.redirect(
+        new URL('/integrations?success=google_fit_connected', request.url)
+      );
+    } else {
+      return NextResponse.redirect(
+        new URL('/integrations?error=connection_failed', request.url)
+      );
+    }
   } catch (error) {
-    return NextResponse.json({ ok: false, error: (error as Error).message }, { status: 500 });
+    console.error('Google Fit callback error:', error);
+    return NextResponse.redirect(
+      new URL('/integrations?error=server_error', request.url)
+    );
   }
 }
-
-

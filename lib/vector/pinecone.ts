@@ -90,16 +90,5 @@ export async function deleteVectors(ids: string[]) {
     await index.deleteMany(batch as any);
   }
 }
-type UpsertArgs = { id: string; values: number[]; metadata?: Record<string, any> };
-
-export async function upsertVector(args: UpsertArgs): Promise<string> {
-  // Placeholder for Pinecone upsert; return id for now
-  return args.id;
-}
-
-export async function findSimilarVectors(vectorId: string, topK: number) {
-  // Placeholder similar vectors
-  return [{ id: vectorId, score: 1 }];
-}
 
 
