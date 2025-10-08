@@ -51,8 +51,8 @@ export async function POST(
 
         // Get updated post with populated author
         const updatedPost = await Post.findById(postId)
-            .populate('author', 'name image')
-            .lean();
+            .select('likes')
+            .lean<{ likes: string[] }>();
 
         return NextResponse.json({
             success: true,
