@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
 
     const response: PostsResponse = {
       success: true,
-      data: posts,
+      data: posts as any,
       message: 'Posts retrieved successfully'
     };
 
