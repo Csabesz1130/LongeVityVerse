@@ -29,6 +29,13 @@ export interface IUser extends Document {
     enableAIInsights: boolean;
     notificationsEnabled: boolean;
   };
+  subscription?: {
+    status: 'active' | 'canceled' | 'past_due';
+    plan: string;
+    amount: number;
+    startDate: Date;
+    endDate?: Date;
+  };
   createdAt: Date;
   updatedAt: Date;
 }
@@ -65,6 +72,17 @@ const UserSchema = new Schema<IUser>({
     },
     enableAIInsights: { type: Boolean, default: true },
     notificationsEnabled: { type: Boolean, default: true }
+  },
+  subscription: {
+    status: { 
+      type: String, 
+      enum: ['active', 'canceled', 'past_due'],
+      index: true
+    },
+    plan: String,
+    amount: { type: Number, min: 0 },
+    startDate: Date,
+    endDate: Date
   }
 }, {
   timestamps: true,
@@ -75,5 +93,6 @@ const UserSchema = new Schema<IUser>({
 UserSchema.index({ organization: 1, email: 1 });
 UserSchema.index({ 'healthIntegrations.googleFit.connected': 1 });
 UserSchema.index({ 'healthIntegrations.fitbit.connected': 1 });
+UserSchema.index({ 'subscription.status': 1, 'subscription.startDate': 1 });
 
 export default mongoose.models.User || mongoose.model<IUser>('User', UserSchema);

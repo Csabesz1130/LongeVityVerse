@@ -1,0 +1,23 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+import { analyticsEngine } from '@/lib/services/analytics-engine';
+
+export async function GET(request: NextRequest) {
+  try {
+    const session = await getServerSession();
+    if (!session?.user || session.user.role !== 'admin') {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const cohortDate = new Date(searchParams.get('cohortDate') || Date.now() - 30 * 24 * 60 * 60 * 1000);
+    const periods = parseInt(searchParams.get('periods') || '12');
+
+    const data = await analyticsEngine.cohortAnalysis(cohortDate, periods);
+
+    return NextResponse.json({ data });
+  } catch (error: any) {
+    console.error('Cohort analytics error:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
