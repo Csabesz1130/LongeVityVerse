@@ -20,10 +20,10 @@ export const useErrorHandling = () => {
 
 export const ErrorFeedback: React.FC<{ error: string | null; success: string | null }> = ({ error, success }) => {
   if (error) {
-    return <Toast variant="destructive">{error}</Toast>;
+    return <Toast message={error} type="error" />;
   }
   if (success) {
-    return <Toast>{success}</Toast>;
+    return <Toast message={success} type="success" />;
   }
   return null;
 };
