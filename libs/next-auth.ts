@@ -5,6 +5,7 @@ import EmailProvider from "next-auth/providers/email";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import config from "@/config";
 import connectMongo from "./mongo";
+import User from "@/lib/db/models/User";
 
 interface NextAuthOptionsExtended extends NextAuthOptions {
   adapter: any;
@@ -48,6 +49,16 @@ export const authOptions: NextAuthOptionsExtended = {
     session: async ({ session, token }) => {
       if (session?.user) {
         session.user.id = token.sub;
+        
+        // Fetch user role from database
+        try {
+          const user = await User.findOne({ email: session.user.email });
+          if (user?.role) {
+            session.user.role = user.role;
+          }
+        } catch (error) {
+          console.error('Error fetching user role:', error);
+        }
       }
       return session;
     },

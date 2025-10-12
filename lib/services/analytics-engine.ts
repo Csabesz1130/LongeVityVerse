@@ -484,7 +484,7 @@ export class AnalyticsEngine {
   async contentPerformance(
     startDate: Date,
     endDate: Date
-  ): Promise<any[]> {
+  ): Promise<any> {
     await connectDB();
 
     const performance = await Content.aggregate([
@@ -556,7 +556,7 @@ export class AnalyticsEngine {
     ]);
 
     return {
-      topContent: performance,
+      performance,
       categoryStats,
     };
   }

@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
       .lean();
 
     // Get total count for pagination
-    const total = await Post.countDocuments(query);
+    const _total = await Post.countDocuments(query);
 
     const response: PostsResponse = {
       success: true,

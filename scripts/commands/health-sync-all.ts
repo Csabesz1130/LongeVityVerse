@@ -22,7 +22,7 @@ export async function syncAllUsers(source?: string) {
       if ((u as any).healthIntegrations?.googleFit?.connected) toQueue.push('google_fit');
     }
     if (!source || source === 'fitbit') {
-      if (u as any).healthIntegrations?.fitbit?.connected) toQueue.push('fitbit');
+      if ((u as any).healthIntegrations?.fitbit?.connected) toQueue.push('fitbit');
     }
     for (const s of toQueue) {
       await inngest.send({ name: 'health/sync.requested', data: { userId: String((u as any)._id), source: s, forceRefresh: false } });

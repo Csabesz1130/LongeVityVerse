@@ -100,7 +100,7 @@ async function processFinalDecision(contentId: string, reviews: any[]) {
   
   const approvedCount = reviews.filter(r => r.status === 'approved').length;
   const rejectedCount = reviews.filter(r => r.status === 'rejected').length;
-  const revisionCount = reviews.filter(r => r.status === 'revision_requested').length;
+  const _revisionCount = reviews.filter(r => r.status === 'revision_requested').length;
 
   let finalStatus: string;
   

@@ -128,12 +128,11 @@ class CacheManager {
    */
   async getStats(): Promise<{ keys: number; memory: string }> {
     try {
-      const info = await redis.info('memory');
       const keys = await redis.dbsize();
       
       return {
         keys,
-        memory: info,
+        memory: 'N/A', // Upstash Redis REST API doesn't support memory info
       };
     } catch (error) {
       console.error('Cache stats error:', error);

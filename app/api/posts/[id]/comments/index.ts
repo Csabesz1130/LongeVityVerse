@@ -39,7 +39,7 @@ export async function GET(
             .lean();
 
         // Get total count for pagination
-        const total = await Comment.countDocuments({ post: postId });
+        const _total = await Comment.countDocuments({ post: postId });
 
         const response: CommentsResponse = {
             success: true,
