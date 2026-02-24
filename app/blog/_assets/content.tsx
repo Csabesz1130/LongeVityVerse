@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import Image, { StaticImageData } from "next/image";
-import marcImg from "@/app/blog/_assets/images/authors/marc.png";
+import csabaImg from "@/app/blog/_assets/images/authors/csaba.png";
 //import healthicon1 from "@/public/blog/iconappleorange.png";
 import healthicon1 from "@/app/blog/_assets/images/authors/iconhealthleaf.png";
 import iconappleorange from "@/app/blog/_assets/images/authors/iconappleorange.png";
@@ -126,7 +126,6 @@ const socialIcons: {
 const authorSlugs: {
   [key: string]: string;
 } = {
-  marc: "marc",
   csaba: "csaba",
 };
 
@@ -134,32 +133,32 @@ const authorSlugs: {
 export const authors: authorType[] = [
   {
     // The slug to use in the URL, from the authorSlugs object above.
-    slug: authorSlugs.marc,
+    slug: authorSlugs.csaba,
     // The name to display in the author's bio. Up to 60 characters.
-    name: "Marc Lou",
+    name: "Csaba Balogh",
     // The job to display in the author's bio. Up to 60 characters.
-    job: "Maker of ByeDispute",
+    job: "Founder of LongevityVerse",
     // The description of the author to display in the author's bio. Up to 160 characters.
     description:
-      "Marc is a developer and an entrepreneur. He's built 20 startups in the last 3 years. 6 were profitable and 3 were acquired. He's currently building ByeDispute, the #1 Stripe Chargebacks Protection tool.",
+      "Csaba is a developer and an entrepreneur passionate about longevity and health technology. He's building LongevityVerse, a community-driven platform connecting longevity enthusiasts.",
     // The avatar of the author to display in the author's bio and avatar badge. It's better to use a local image, but you can also use an external image (https://...)
-    avatar: marcImg,
+    avatar: csabaImg,
     // A list of social links to display in the author's bio.
     socials: [
       {
         name: socialIcons.twitter.name,
         icon: socialIcons.twitter.svg,
-        url: "https://twitter.com/marc_louvion",
+        url: "https://twitter.com/csaba_balogh",
       },
       {
         name: socialIcons.linkedin.name,
         icon: socialIcons.linkedin.svg,
-        url: "https://www.linkedin.com/in/marclouvion/",
+        url: "https://www.linkedin.com/in/csababalogh/",
       },
       {
         name: socialIcons.github.name,
         icon: socialIcons.github.svg,
-        url: "https://github.com/Marc-Lou-Org/ship-fast",
+        url: "https://github.com/Csabesz1130/LongeVityVerse",
       },
     ],
   },
@@ -214,7 +213,7 @@ export const articles: articleType[] = [
       categories.find((category) => category.slug === categorySlugs.feature),
     ],
     // The author of the article. It's used to generate a link to the author's bio page.
-    author: authors.find((author) => author.slug === authorSlugs.marc),
+    author: authors.find((author) => author.slug === authorSlugs.csaba),
     // The date of the article. It's used to generate the meta date.
     publishedAt: "2024-04-04",
     image: {
@@ -278,7 +277,7 @@ export const articles: articleType[] = [
       categories.find((category) => category.slug === categorySlugs.feature),
     ],
     // The author of the article. It's used to generate a link to the author's bio page.
-    author: authors.find((author) => author.slug === authorSlugs.marc),
+    author: authors.find((author) => author.slug === authorSlugs.csaba),
     // The date of the article. It's used to generate the meta date.
     publishedAt: "2024-04-04",
     image: {
@@ -357,7 +356,7 @@ export const articles: articleType[] = [
       categories.find((category) => category.slug === categorySlugs.feature),
     ],
     // The author of the article. It's used to generate a link to the author's bio page.
-    author: authors.find((author) => author.slug === authorSlugs.marc),
+    author: authors.find((author) => author.slug === authorSlugs.csaba),
     // The date of the article. It's used to generate the meta date.
     publishedAt: "2024-04-04",
     image: {
@@ -439,7 +438,7 @@ export const articles: articleType[] = [
   categories: [
     categories.find((category) => category.slug === categorySlugs.feature),
   ],
-  author: authors.find((author) => author.slug === authorSlugs.marc),
+  author: authors.find((author) => author.slug === authorSlugs.csaba),
   publishedAt: "2024-04-11",
   image: {
     src: healthicon1,
@@ -481,7 +480,7 @@ export const articles: articleType[] = [
   categories: [
     categories.find((category) => category.slug === categorySlugs.feature),
   ],
-  author: authors.find((author) => author.slug === authorSlugs.marc),
+  author: authors.find((author) => author.slug === authorSlugs.csaba),
   publishedAt: "2024-04-18",
   image: {
     src: healthicon1,
@@ -526,7 +525,7 @@ export const articles: articleType[] = [
   categories: [
     categories.find((category) => category.slug === categorySlugs.feature),  
   ],
-  author: authors.find((author) => author.slug === authorSlugs.marc),
+  author: authors.find((author) => author.slug === authorSlugs.csaba),
   publishedAt: "2024-04-25",
   image: {
     src: healthicon1,
@@ -565,7 +564,7 @@ export const articles: articleType[] = [
   categories: [
     categories.find((category) => category.slug === categorySlugs.feature),
   ],
-  author: authors.find((author) => author.slug === authorSlugs.marc),
+  author: authors.find((author) => author.slug === authorSlugs.csaba),
   publishedAt: "2024-05-02",
   image: {
     src: healthicon1,
