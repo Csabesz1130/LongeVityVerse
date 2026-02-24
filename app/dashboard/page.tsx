@@ -1,17 +1,24 @@
 import ButtonAccount from "@/components/ButtonAccount";
+import DashboardTabsClient from "@/components/dashboard/DashboardTabs";
 
 export const dynamic = "force-dynamic";
 
-// This is a private page: It's protected by the layout.js component which ensures the user is authenticated.
-// It's a server compoment which means you can fetch data (like the user profile) before the page is rendered.
-// See https://shipfa.st/docs/tutorials/private-page
 export default async function Dashboard() {
   return (
-    <main className="min-h-screen p-8 pb-24">
-      <section className="max-w-xl mx-auto space-y-8">
-        <ButtonAccount />
-        <h1 className="text-3xl md:text-4xl font-extrabold">Private Page</h1>
-      </section>
+    <main className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Top Bar */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-extrabold text-gray-900">Your Longevity Dashboard</h1>
+            <p className="text-gray-500 mt-1">Track, analyze, and optimize your healthspan</p>
+          </div>
+          <ButtonAccount />
+        </div>
+
+        {/* Tabbed Dashboard Content */}
+        <DashboardTabsClient />
+      </div>
     </main>
   );
 }
